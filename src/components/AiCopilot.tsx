@@ -49,8 +49,8 @@ export default function AiCopilot() {
     // 1. Conversational Greetings & Small Talk (Lua's charming perspective)
     if (/^(hola|buenos d[ií]as|buenas tardes|buenas noches|hey|qu[eé] tal|c[oó]mo est[aá]s|saludos|que onda|buenas|miau|miau miau)/i.test(qLower)) {
       return isEs
-        ? '¡Miau! 🐾 Hola. Soy Lua, la copiloto de Mario. Siempre estoy en su escritorio mientras él dirige sprints y programa scripts. Me sé todos sus trucos y cómo trabaja. ¿Qué quieres saber sobre sus proyectos o experiencia?'
-        : 'Meow! 🐾 Hello! I am Lua, Mario\'s copilot. I supervise him from his desk during every single sprint and script execution. I know all his work habits and methods. What would you like to know about his projects or experience?';
+        ? '¡Miau! 🐾 Hola. Soy Lua, el agente gatuno de Mario. Siempre estoy en su escritorio mientras él dirige sprints y programa scripts. Me sé todos sus trucos y cómo trabaja. ¿Qué quieres saber sobre sus proyectos o experiencia?'
+        : 'Meow! 🐾 Hello! I am Lua, Mario\'s feline agent. I supervise him from his desk during every single sprint and script execution. I know all his work habits and methods. What would you like to know about his projects or experience?';
     }
 
     if (/^(gracias|muchas gracias|agradecido|thanks|thank you|thx)/i.test(qLower)) {
@@ -67,8 +67,8 @@ export default function AiCopilot() {
 
     if (/^(qui[eé]n eres|qui[eé]n es lua|qui[eé]n es mario|cu[aá]ntame de ti|who are you|about you|secretos)/i.test(qLower)) {
       return isEs
-        ? '¡Te cuento! 🐾 Soy Lua, la gata tricolor y copiloto oficial de Mario. ¿Un secreto suyo? No tolera las reuniones eternas ni el trabajo manual repetitivo: si una tarea toma más de 10 minutos al día, ¡de inmediato le escribe un script en Python o un agente de IA para automatizarla! Lleva 7 años en software, está certificado en Scrum y su lema es entregar a tiempo y sin fricción.'
-        : 'Let me tell you! 🐾 I am Lua, Mario\'s calico desk companion. A secret about him? He hates endless meetings and repetitive busywork: if a task takes more than 10 minutes a day, he immediately writes a Python script or spins up an AI Agent to automate it! He has 7+ years in software, is Scrum certified (SFPC), and ensures deliverables ship on schedule.';
+        ? '¡Te cuento! 🐾 Soy Lua, el agente gatuno oficial de Mario. ¿Un secreto suyo? No tolera las reuniones eternas ni el trabajo manual repetitivo: si una tarea toma más de 10 minutos al día, ¡de inmediato le escribe un script en Python o un agente de IA para automatizarla! Lleva 7 años en software, está certificado en Scrum y su lema es entregar a tiempo y sin fricción.'
+        : 'Let me tell you! 🐾 I am Lua, Mario\'s official feline agent. A secret about him? He hates endless meetings and repetitive busywork: if a task takes more than 10 minutes a day, he immediately writes a Python script or spins up an AI Agent to automate it! He has 7+ years in software, is Scrum certified (SFPC), and ensures deliverables ship on schedule.';
     }
 
     if (/(qu[eé] haces|para qu[eé] sirves|ayuda|help)/i.test(qLower)) {
@@ -235,8 +235,8 @@ export default function AiCopilot() {
                 {/* Pure Holographic Character Materializing from the bottom */}
                 <div className="relative z-10 flex items-end justify-center max-h-[270px] hologram-spawn">
                   <img
-                    src="/gato.png"
-                    alt="Lua la gata de Mario - Agente IA Holográfico"
+                    src="/gato2.png"
+                    alt="Lua - El Agente Gatuno de Mario"
                     className="hologram-character max-h-[260px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_10px_25px_rgba(6,182,212,0.4)]"
                   />
                 </div>
@@ -245,7 +245,7 @@ export default function AiCopilot() {
               {/* Agent info */}
               <div className="text-center relative z-10 pt-2 border-t border-white/10 w-full">
                 <h3 className="font-display font-bold text-white text-base flex items-center justify-center gap-1.5">
-                  Lua 🐾 <span className="text-xs text-cyan-400 font-normal">({language === 'en' ? 'AI Copilot' : 'Copiloto IA'})</span>
+                  Lua 🐾 <span className="text-xs text-cyan-400 font-normal">({language === 'en' ? "Mario's Feline Agent" : 'Agente Gatuno de Mario'})</span>
                 </h3>
               </div>
             </div>
@@ -334,7 +334,7 @@ export default function AiCopilot() {
             <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
               <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5 shadow-md shadow-cyan-500/20">
                 <img
-                  src="/gato.png"
+                  src="/gato2.png"
                   alt="Lua 🐾"
                   className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                 />
@@ -366,7 +366,7 @@ export default function AiCopilot() {
                       <User className="w-4 h-4 text-white" />
                     ) : (
                       <img
-                        src="/gato.png"
+                        src="/gato2.png"
                         alt="Lua 🐾"
                         className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                       />
@@ -389,7 +389,7 @@ export default function AiCopilot() {
                 <div className="flex gap-2.5 max-w-[85%]">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5">
                     <img
-                      src="/gato.png"
+                      src="/gato2.png"
                       alt="Lua 🐾"
                       className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                     />
@@ -406,7 +406,7 @@ export default function AiCopilot() {
                 <div className="flex gap-2.5">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5">
                     <img
-                      src="/gato.png"
+                      src="/gato2.png"
                       alt="Lua 🐾"
                       className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                     />
