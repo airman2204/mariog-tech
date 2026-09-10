@@ -90,8 +90,8 @@ export default function AiCopilot() {
 
     if (qLower.includes('gnp') || qLower.includes('badak') || qLower.includes('seguro') || qLower.includes('insurance')) {
       return isEs
-        ? 'En Badak Innovación (2024 - 2026), Mario se desempeñó como Project Manager para la fábrica de software de GNP Seguros, liderando entregas en alcance, costo y tiempo, implementando reporteo automatizado con Google Apps Script y gestionando incidencias en Jira.'
-        : 'At Badak Innovación (2024 - 2026), Mario served as Project Manager for GNP Seguros software factory, ensuring delivery on scope, cost, and schedule, automating weekly reporting via Google Apps Script, and directing Jira defect resolution.';
+        ? 'Mario laboró como IT Project Manager en Badak Innovación (2024 - 2026), asignado directamente a la cuenta cliente de GNP Seguros (fábrica de software). Ahí lideró entregas contractuales en tiempo y presupuesto, implementó reporteo automatizado con Google Apps Script y gestionó incidencias en Jira ante la PMO.'
+        : 'Mario worked as IT Project Manager at Badak Innovación (2024 - 2026), assigned directly to the client account of GNP Seguros (software factory). He governed delivery on scope, cost, and schedule, automated weekly reporting via Google Apps Script, and directed Jira defect triage with the PMO.';
     }
 
     if (qLower.includes('niku') || qLower.includes('crm') || qLower.includes('velocidad') || qLower.includes('velocity')) {

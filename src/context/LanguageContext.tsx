@@ -103,14 +103,14 @@ export const translations = {
         tickets: [
           {
             id: 'MAR-201',
-            title: 'Badak Innovación y Desarrollo — GNP Seguros',
-            tag: 'Fábrica de Software',
+            title: 'Badak Innovación (Cuenta GNP Seguros)',
+            tag: 'Cliente: GNP Seguros',
             priority: 'Highest',
             period: 'Ene 2024 – Sep 2026',
             points: '13 SP',
             epic: 'Sector Asegurador',
             assignee: 'MG',
-            description: 'Project Manager: Dirección de proyectos de software en tiempo, alcance y presupuesto. Automatización de reportes semanales con Google Apps Script e IA para la PMO. Coordinación de ceremonias ágiles y gestión de incidencias en Jira.',
+            description: 'Project Manager en Badak Innovación, asignado a la fábrica de software para el cliente GNP Seguros. Dirección de entregables en tiempo, alcance y presupuesto. Automatización de reportes semanales con Google Apps Script ante la PMO. Coordinación de ceremonias ágiles y gestión de incidencias en Jira.',
           },
           {
             id: 'MAR-202',
@@ -337,14 +337,14 @@ export const translations = {
         tickets: [
           {
             id: 'MAR-201',
-            title: 'Badak Innovación y Desarrollo — GNP Seguros',
-            tag: 'Software Factory',
+            title: 'Badak Innovación (Client GNP Seguros)',
+            tag: 'Client: GNP Seguros',
             priority: 'Highest',
             period: 'Jan 2024 – Sep 2026',
             points: '13 SP',
             epic: 'Insurance Industry',
             assignee: 'MG',
-            description: 'Project Manager: Directed software solutions within scope, time & budget. Automated weekly progress reports with Google Apps Script & AI for the PMO. Led daily agile standups and Jira defect tracking.',
+            description: 'Project Manager at Badak Innovación, assigned to client account GNP Seguros software factory. Directed software solutions within scope, time & budget. Automated weekly progress reports with Google Apps Script for the PMO. Led daily agile standups and Jira defect tracking.',
           },
           {
             id: 'MAR-202',

@@ -1,4 +1,4 @@
-﻿import { Clock, Globe, Award, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
+import { Clock, Globe, Award, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function ExecutiveSnapshot() {
@@ -22,7 +22,7 @@ export default function ExecutiveSnapshot() {
               <p className="text-sm font-bold text-white leading-tight">
                 7+ {isEs ? 'Años en Software' : 'Years in Software'}
               </p>
-              <p className="text-[11px] text-cyan-300/80">GNP Seguros • Niku Tech</p>
+              <p className="text-[11px] text-cyan-300/80">Badak (Cliente GNP) • Niku Tech</p>
             </div>
           </div>
 

@@ -138,12 +138,14 @@ export default function CvPreviewModal({
           <div className="space-y-3">
             <div className="glass rounded-2xl p-4 border border-cyan-500/20">
               <div className="flex items-center justify-between mb-1">
-                <h4 className="text-sm font-bold text-white">Badak Innovación • GNP Seguros</h4>
+                <h4 className="text-sm font-bold text-white">Badak Innovación y Desarrollo</h4>
                 <span className="text-xs text-cyan-400 font-semibold">2024 - 2026</span>
               </div>
-              <p className="text-xs text-slate-400 mb-2 font-medium">Project Manager / Fábrica de Software</p>
+              <p className="text-xs text-purple-300 mb-2 font-semibold">
+                {isEs ? 'IT Project Manager (Asignado a cuenta cliente: GNP Seguros)' : 'IT Project Manager (Assigned to client account: GNP Seguros)'}
+              </p>
               <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
-                <li>{isEs ? 'Liderazgo de entregas en alcance, costo y cronograma para el cliente GNP Seguros.' : 'Led deliverables in scope, cost, and timeline for GNP Seguros software factory.'}</li>
+                <li>{isEs ? 'Dirección de proyectos de software para la fábrica de software asignado a la cuenta GNP Seguros.' : 'Led software projects assigned to client account GNP Seguros software factory.'}</li>
                 <li>{isEs ? 'Automatización de reportes semanales con Google Apps Script y Python ante la PMO.' : 'Automated weekly PMO reports with Google Apps Script & Python.'}</li>
                 <li>{isEs ? 'Gestión de backlog, ceremonias diarias y resolución de incidencias en Jira.' : 'Backlog management, daily standups, and Jira defect governance.'}</li>
               </ul>

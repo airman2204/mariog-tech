@@ -26,10 +26,10 @@ export default function CaseStudies() {
   const cases: CaseStudy[] = [
     {
       id: 'gnp',
-      client: 'GNP Seguros (Vía Badak)',
-      role: 'IT Project Manager',
+      client: isEs ? 'Badak Innovación (Cuenta GNP Seguros)' : 'Badak Innovación (Client GNP Seguros)',
+      role: isEs ? 'IT Project Manager (Asignado a Fábrica de Software)' : 'IT Project Manager (Software Factory Lead)',
       period: '2024 - 2026',
-      badge: isEs ? 'Fábrica de Software' : 'Software Factory',
+      badge: isEs ? 'Empresa: Badak' : 'Employer: Badak',
       badgeColor: '#06b6d4',
       title: isEs
         ? 'Automatización del Reporteo PMO y Control de Entregas'
@@ -37,8 +37,8 @@ export default function CaseStudies() {
       metric: '-40%',
       metricLabel: isEs ? 'Tiempo en generación de reportes' : 'Time spent generating reports',
       situation: isEs
-        ? 'La generación manual de reportes semanales y seguimiento de compromisos consumía horas clave y generaba riesgo de inconsistencias con la PMO del cliente asegurador.'
-        : 'Manual weekly reporting and commitment tracking consumed valuable hours and introduced consistency risks with the insurer\'s PMO.',
+        ? 'Como Project Manager en Badak asignado a la fábrica de software para el cliente GNP Seguros, la generación manual de reportes semanales y seguimiento de compromisos consumía horas clave ante la PMO.'
+        : 'As Project Manager at Badak assigned to the software factory for client GNP Seguros, manual weekly reporting and commitment tracking consumed excessive hours before the PMO.',
       action: isEs
         ? 'Diseñé e implementé scripts automatizados en Google Apps Script y Python conectados a fuentes de datos, estandarizando el control de avance, ceremonias diarias y gestión de defectos en Jira.'
         : 'Architected and deployed automated pipelines using Google Apps Script and Python, standardizing milestone reports, daily standups, and Jira defect tracking.',

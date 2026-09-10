@@ -578,20 +578,24 @@ export default function KanbanBoard() {
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-1">
-                      Badak Innovación y Desarrollo — GNP Seguros
+                      Badak Innovación y Desarrollo
                     </h3>
-                    <p className="text-sm font-semibold text-cyan-400 mb-3">
+                    <p className="text-sm font-semibold text-cyan-400 mb-1">
                       IT Project Manager
+                    </p>
+                    <p className="text-xs font-semibold text-purple-300 mb-3 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      {language === 'es' ? 'Asignado a cuenta cliente: GNP Seguros' : 'Assigned to client account: GNP Seguros'}
                     </p>
                     <p className="text-sm text-slate-300 leading-relaxed mb-4">
                       {language === 'es'
-                        ? 'Dirección integral de proyectos de software en el sector asegurador asegurando alcance, tiempo y presupuesto. Automatización de reportes semanales con Google Apps Script y herramientas de IA para la PMO. Coordinación de ceremonias ágiles Scrum y gestión de incidencias en Jira.'
-                        : 'End-to-end delivery of enterprise software solutions for GNP Seguros insurance. Automated weekly progress reporting via Google Apps Script and AI pipelines for PMO. Led Agile ceremonies and Jira defect management.'}
+                        ? 'En Badak Innovación, desempeñé la dirección integral de proyectos de software asignado a la fábrica de software para el cliente GNP Seguros, asegurando alcance, tiempo y presupuesto. Automatización de reportes semanales con Google Apps Script y herramientas de IA para la PMO. Coordinación de ceremonias ágiles Scrum y gestión de incidencias en Jira.'
+                        : 'At Badak Innovación, delivered end-to-end software projects assigned to client account GNP Seguros software factory, governing scope, schedule, and budget. Automated weekly progress reporting via Google Apps Script and AI pipelines for PMO. Led Agile ceremonies and Jira defect management.'}
                     </p>
                     <div className="flex flex-wrap gap-2 pt-3 border-t border-white/5">
                       <span className="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 border border-white/10">Scrum / Jira</span>
                       <span className="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 border border-white/10">Google Apps Script</span>
-                      <span className="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/5 text-slate-300 border border-white/10">GNP Software Factory</span>
+                      <span className="px-2.5 py-1 rounded-lg text-xs font-medium bg-purple-500/15 text-purple-300 border border-purple-500/30">Cliente: GNP Seguros</span>
                       <span className="px-2.5 py-1 rounded-lg text-xs font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">-40% Tiempo Reporteo</span>
                     </div>
                   </div>
