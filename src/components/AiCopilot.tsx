@@ -96,10 +96,13 @@ export default function AiCopilot() {
     }
 
     // 3. Salario, Disponibilidad, Esquema de Trabajo (Salary, Availability, Work Mode)
-    if (qLower.includes('salari') || qLower.includes('sueldo') || qLower.includes('cuanto gana') || qLower.includes('cuánto gana') || qLower.includes('tarifa') || qLower.includes('rate') || qLower.includes('salary') || qLower.includes('compensac') || qLower.includes('disponib') || qLower.includes('remoto') || qLower.includes('hibrid') || qLower.includes('cuándo puede empezar') || qLower.includes('cuando puede empezar')) {
-      return isEs
-        ? '¡Te cuento! 🐾 La expectativa salarial de Mario es de $45,000 MXN netos mensuales (o su equivalente según esquema contractual y paquete de beneficios). En cuanto a disponibilidad, está disponible de manera inmediata (Open to Work) para esquemas 100% remotos o híbridos en roles de IT Project Manager, Scrum Master o Líder de Automatización e IA.'
-        : 'Let me share that! 🐾 Mario\'s target compensation is $45,000 MXN net monthly (~$2,300 - $2,500 USD depending on contract type and benefits package). He has immediate availability (Open to Work) for 100% remote or hybrid roles as IT Project Manager, Scrum Master, or AI/Automation Lead.';
+    const isSalaryQuery = qLower.includes('salari') || qLower.includes('sueldo') || qLower.includes('cuanto gana') || qLower.includes('cuánto gana') || qLower.includes('tarifa') || qLower.includes('rate') || qLower.includes('salary') || qLower.includes('compensation') || qLower.includes('compensac') || qLower.includes('disponib') || qLower.includes('remoto') || qLower.includes('hibrid') || qLower.includes('cuándo puede empezar') || qLower.includes('cuando puede empezar') || qLower.includes('when can he start') || qLower.includes('usd') || qLower.includes('dolar') || qLower.includes('dollar');
+    if (isSalaryQuery) {
+      const isEnglishQuery = /salary|rate|compensation|usd|dollar|when can|availability|how much/i.test(qLower) || !isEs;
+      if (isEnglishQuery) {
+        return 'Meow! 🐾 Mario\'s target compensation is approximately $2,400 – $2,600 USD net monthly (~$45,000 MXN net, equivalent to ~$32,000 – $36,000 USD gross annually depending on contract type and benefits package). He has immediate availability (Open to Work) for 100% remote or hybrid positions as an IT Project Manager, Scrum Master, or AI/Automation Lead.';
+      }
+      return '¡Te cuento! 🐾 La expectativa salarial de Mario es de $45,000 MXN netos mensuales (~$2,400 – $2,600 USD netos mensuales, o su equivalente según esquema contractual y paquete de beneficios). En cuanto a disponibilidad, está disponible de manera inmediata (Open to Work) para esquemas 100% remotos o híbridos en roles de IT Project Manager, Scrum Master o Líder de Automatización e IA.';
     }
 
     // 4. Ubicación / Residencia / Relocación
