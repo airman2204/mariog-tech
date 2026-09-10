@@ -78,68 +78,132 @@ export default function AiCopilot() {
     }
 
     // Direct match with preset questions
-    const exactMatch = t.copilot.questions.find((q) => q.question === question);
+    const exactMatch = t.copilot.questions.find((q) => q.question.toLowerCase() === qLower);
     if (exactMatch) return exactMatch.answer;
 
-    // 2. Intelligent topic classification based on Mario's verified CV
-    if (qLower.includes('certif') || qLower.includes('sfpc') || qLower.includes('certiprof') || qLower.includes('credencial')) {
+    // 2. Idiomas / Nivel de Inglés (English proficiency)
+    if (qLower.includes('ingl') || qLower.includes('english') || qLower.includes('idioma') || qLower.includes('language') || qLower.includes('bilingual') || qLower.includes('b2')) {
       return isEs
-        ? 'Mario cuenta con la certificación oficial Scrum Professional Certificate (SFPC) emitida por CertiProf (ID: 92706455), respaldando su dominio en marcos ágiles, ceremonias Scrum y gestión de sprints.'
-        : 'Mario holds the official Scrum Professional Certificate (SFPC) issued by CertiProf (ID: 92706455), validating his mastery in Agile frameworks, Scrum rituals, and sprint governance.';
+        ? '¡Miau! 🐾 El nivel de inglés de Mario es Intermedio Avanzado (B2 profesional). Cuenta con fluidez para coordinar squads técnicos internacionales, participar en ceremonias ágiles (Dailies, Plannings, Reviews), redactar documentación técnica y gestionar requerimientos con stakeholders en inglés. Su lengua materna es el español.'
+        : 'Meow! 🐾 Mario\'s English proficiency is Upper-Intermediate (Professional B2). He actively coordinates with cross-border technical squads, conducts Agile ceremonies (Dailies, Plannings, Sprint Reviews), writes technical documentation, and communicates comfortably with English-speaking stakeholders. His native language is Spanish.';
     }
 
+    // 3. Salario, Disponibilidad, Esquema de Trabajo (Salary, Availability, Work Mode)
+    if (qLower.includes('salari') || qLower.includes('sueldo') || qLower.includes('cuanto gana') || qLower.includes('cuánto gana') || qLower.includes('tarifa') || qLower.includes('rate') || qLower.includes('salary') || qLower.includes('compensac') || qLower.includes('disponib') || qLower.includes('remoto') || qLower.includes('hibrid') || qLower.includes('cuándo puede empezar') || qLower.includes('cuando puede empezar')) {
+      return isEs
+        ? 'Mario tiene disponibilidad inmediata (Open to Work) para incorporarse a nuevos retos como IT Project Manager, Scrum Master o Líder de Automatización/IA. Está 100% abierto a esquemas remotos o híbridos. Su expectativa salarial es competitiva y adaptable según el alcance del proyecto, prestaciones y responsabilidades del squad. ¡Te invito a agendar una llamada directa de 15 min con él usando el botón de Calendly para platicar detalles!'
+        : 'Mario is immediately available (Open to Work) for roles as IT Project Manager, Scrum Master, or AI/Automation Lead. He is fully open to Remote or Hybrid setups. His salary range is competitive and adaptable based on scope, benefits, and squad responsibilities. Feel free to book a direct 15-min discovery call via Calendly to discuss compensation and fit!';
+    }
+
+    // 4. Ubicación / Residencia / Relocación
+    if (qLower.includes('donde vive') || qLower.includes('dónde vive') || qLower.includes('ubicacion') || qLower.includes('ubicación') || qLower.includes('pais') || qLower.includes('ciudad') || qLower.includes('puebla') || qLower.includes('location') || qLower.includes('reloc')) {
+      return isEs
+        ? 'Mario radica en San Andrés Cholula, Puebla, México. Trabaja habitualmente en esquema remoto con equipos distribuidos en cualquier zona horaria (CST, EST, etc.) y cuenta con total disponibilidad para colaborar globalmente.'
+        : 'Mario is based in San Andrés Cholula, Puebla, Mexico. He regularly collaborates remotely with distributed teams across multiple time zones (CST, EST, PST) and is fully equipped for global work.';
+    }
+
+    // 5. Certificaciones / SFPC / CertiProf
+    if (qLower.includes('certif') || qLower.includes('sfpc') || qLower.includes('certiprof') || qLower.includes('credencial') || qLower.includes('examen')) {
+      return isEs
+        ? 'Mario cuenta con la certificación oficial Scrum Professional Certificate (SFPC) expedida por CertiProf con ID de credencial #92706455. Esta certificación valida su dominio en ceremonias Scrum, gestión de sprints, roles ágiles, estimación en Story Points y resolución continua de bloqueos.'
+        : 'Mario holds the official Scrum Professional Certificate (SFPC) issued by CertiProf (Credential ID: 92706455). This validates his mastery in Scrum ceremonies, sprint backlog governance, agile estimation with Story Points, and continuous impediment removal.';
+    }
+
+    // 6. Badak Innovación & GNP Seguros
     if (qLower.includes('gnp') || qLower.includes('badak') || qLower.includes('seguro') || qLower.includes('insurance')) {
       return isEs
-        ? 'Mario laboró como IT Project Manager en Badak Innovación (2024 - 2026), asignado directamente a la cuenta cliente de GNP Seguros (fábrica de software). Ahí lideró entregas contractuales en tiempo y presupuesto, implementó reporteo automatizado con Google Apps Script y gestionó incidencias en Jira ante la PMO.'
-        : 'Mario worked as IT Project Manager at Badak Innovación (2024 - 2026), assigned directly to the client account of GNP Seguros (software factory). He governed delivery on scope, cost, and schedule, automated weekly reporting via Google Apps Script, and directed Jira defect triage with the PMO.';
+        ? 'Mario laboró como Project Manager en Badak Innovación (Ene 2024 – Sep 2026), asignado específicamente a la fábrica de software para el cliente GNP Seguros. Allí dirigió entregables contractuales en tiempo, alcance y costo; automatizó reportes semanales con Google Apps Script y herramientas de IA (reduciendo 40% el tiempo administrativo); y coordinó dailies con control de defectos y calidad en Jira ante la PMO.'
+        : 'Mario worked as Project Manager at Badak Innovación (Jan 2024 – Sep 2026), dedicated directly to the software factory for client GNP Seguros. He governed deliverables within scope, schedule, and budget; automated weekly status reports via Google Apps Script & AI tools (saving 40% reporting time); and led daily syncs with defect triage in Jira for the PMO.';
     }
 
+    // 7. Niku Tecnología
     if (qLower.includes('niku') || qLower.includes('crm') || qLower.includes('velocidad') || qLower.includes('velocity')) {
       return isEs
-        ? 'En Niku Tecnología (2020 - 2023), implementó el marco Scrum incrementando en un 30% la velocidad de entrega de los equipos. Además integró agentes de IA y flujos con Python y Google Apps Script para automatizar el CRM y supervisión de tareas.'
-        : 'At Niku Tecnología (2020 - 2023), he implemented the Scrum framework boosting team delivery velocity by 30%. He also integrated AI agents and Python / Apps Script pipelines to automate CRM data management and task tracking.';
+        ? 'En Niku Tecnología (Dic 2020 – Nov 2023), como Project Lead Manager, implementó el marco Scrum incrementando en un 30% la velocidad de entrega del equipo. Integró agentes de IA y scripts en Python / Google Apps Script para automatizar la gestión e interacción en CRM, y desarrolló WBS, cronogramas, presupuestos y matrices de riesgos integrales.'
+        : 'At Niku Tecnología (Dec 2020 – Nov 2023) as Project Lead Manager, he rolled out Scrum boosting squad delivery velocity by 30%. He integrated AI agents and Python / Apps Script automations for CRM workflows and led end-to-end WBS, scheduling, budgets, and risk mitigation matrices.';
     }
 
-    if (qLower.includes('incidente') || qLower.includes('incident') || qLower.includes('jira') || qLower.includes('defecto') || qLower.includes('bug') || qLower.includes('trazabilidad') || qLower.includes('sla') || qLower.includes('calidad')) {
+    // 8. Track Digital Communication & Experiencia Previa (Book Mart / Unity / AR)
+    if (qLower.includes('track digital') || qLower.includes('book mart') || qLower.includes('multimedia') || qLower.includes('ar') || qLower.includes('unity') || qLower.includes('vuforia') || qLower.includes('pasado') || qLower.includes('experiencia previa')) {
       return isEs
-        ? 'Un caso de éxito clave de Mario fue automatizar el seguimiento de incidentes en Jira mediante scripts: logró priorización en tiempo real y una trazabilidad profunda (tiempo de ciclo, causa raíz y área responsable). Esto brindó total transparencia con la PMO y clientes, facilitando negociaciones objetivas ante atrasos y asegurando estándares de calidad de código sin fricciones.'
-        : 'A standout success of Mario was automating Jira incident management via custom scripts: he enabled real-time triage and in-depth defect traceability (cycle times, root causes, and owner accountability). This delivered 100% transparency for the PMO and clients, empowering data-driven negotiations over delivery delays and code quality.';
+        ? 'En Track Digital Communication (2018 – 2020) gestionó proyectos digitales y multimedia alineándolos a KPIs estratégicos de negocio. Previamente, en Book Mart (2014 – 2018) lideró proyectos interactivos, apps móviles y experiencias de Realidad Aumentada con Unity y Vuforia, lo que le da una sólida base técnica y de producto digital.'
+        : 'At Track Digital Communication (2018 – 2020), he aligned digital & multimedia project delivery with business KPIs. Earlier at Book Mart (2014 – 2018), he directed interactive solutions, mobile apps, and Augmented Reality experiences with Unity and Vuforia, giving him deep technical product foundation.';
     }
 
-    if (qLower.includes('automatiz') || qLower.includes('script') || qLower.includes('python') || qLower.includes('apps script') || qLower.includes('google')) {
+    // 9. Jira, Defectos, Bugs, Trazabilidad, Métricas y Calidad
+    if (qLower.includes('incidente') || qLower.includes('incident') || qLower.includes('jira') || qLower.includes('defecto') || qLower.includes('bug') || qLower.includes('trazabilidad') || qLower.includes('sla') || qLower.includes('calidad') || qLower.includes('qa')) {
       return isEs
-        ? 'Mario es especialista en automatización operativa: diseñó pipelines con Google Apps Script y Python que redujeron un 40% el tiempo de generación de reportes semanales y seguimiento de clientes, garantizando cero errores humanos en reporteo ejecutivo.'
-        : 'Mario specializes in workflow automation: he designed Google Apps Script and Python pipelines that cut weekly progress reporting time by 40%, eliminating human error in executive tracking.';
+        ? 'Mario tiene un enfoque riguroso de calidad en Jira: implementó trazabilidad completa de incidencias y defectos (tiempo de ciclo, causa raíz, severidad y área responsable). Esto proporciona visibilidad transparente a la PMO y clientes, previniendo cuellos de botella y sustentando negociaciones objetivas ante cualquier cambio de alcance.'
+        : 'Mario maintains a rigorous defect governance in Jira: he instituted end-to-end bug traceability (cycle times, root cause, severity, and accountability). This gives full transparency to the PMO and clients, eliminating bottlenecks and supporting data-backed negotiations.';
     }
 
-    if (qLower.includes('ia') || qLower.includes('ai') || qLower.includes('inteligencia artificial') || qLower.includes('langflow') || qLower.includes('agent') || qLower.includes('prompt')) {
+    // 10. Automatizaciones (Python, Google Apps Script, Scripts)
+    if (qLower.includes('automatiz') || qLower.includes('script') || qLower.includes('python') || qLower.includes('apps script') || qLower.includes('ahorro') || qLower.includes('40%') || qLower.includes('reporte')) {
       return isEs
-        ? 'Mario diseña e implementa soluciones con Agentes de IA, LangFlow y técnicas avanzadas de Prompt Engineering, aplicándolas para enriquecimiento de CRM, supervisión de entregables y optimización de flujos de trabajo en equipos ágiles.'
-        : 'Mario designs and implements custom AI Agents, LangFlow pipelines, and advanced Prompt Engineering, leveraging them to augment CRM data, monitor deliverables, and streamline agile workflows.';
+        ? 'La automatización es el sello distintivo de Mario: diseña scripts en Python y Google Apps Script que reducen un 40% del tiempo operativo en la generación de reportes ejecutivos de avance, seguimiento de compromisos y consolidación de métricas, eliminando errores manuales.'
+        : 'Automation is Mario\'s signature strength: he engineers Python and Google Apps Script workflows that cut 40% of manual effort in weekly status reporting, client commitments, and metric aggregation, eradicating manual error.';
     }
 
-    if (qLower.includes('educa') || qLower.includes('estudio') || qLower.includes('universidad') || qLower.includes('buap') || qLower.includes('uvp') || qLower.includes('carrera') || qLower.includes('degree') || qLower.includes('school')) {
+    // 11. Inteligencia Artificial, Agentes de IA, LangFlow, Prompt Engineering
+    if (qLower.includes('ia') || qLower.includes('ai') || qLower.includes('inteligencia artificial') || qLower.includes('langflow') || qLower.includes('agent') || qLower.includes('prompt') || qLower.includes('llm')) {
       return isEs
-        ? 'Mario es Licenciado en Ciencias de la Comunicación por la Benemérita Universidad Autónoma de Puebla (BUAP, 2014) y cuenta con un Diplomado en Gestión de Proyectos por la Universidad del Valle de Puebla (UVP, 2023), además de su certificación profesional en Scrum (SFPC).'
-        : 'Mario holds a Bachelor\'s Degree in Communication Sciences from Benemérita Universidad Autónoma de Puebla (BUAP, 2014) and a Postgraduate Diploma in Project Management from Universidad del Valle de Puebla (UVP, 2023), along with his official Scrum Professional certification (SFPC).';
+        ? 'Mario domina el ecosistema de IA aplicada a operaciones y software: desarrolla Agentes de IA autónomos, pipelines visuales en LangFlow y técnicas avanzadas de Prompt Engineering para monitoreo de tareas, gestión inteligente de CRM y aceleración de equipos ágiles (¡como yo, Lua!).'
+        : 'Mario excels in operational and software AI: he builds autonomous AI Agents, LangFlow visual pipelines, and advanced Prompt Engineering for task tracking, CRM intelligence, and agile team acceleration (just like me, Lua!).';
     }
 
-    if (qLower.includes('contacto') || qLower.includes('correo') || qLower.includes('email') || qLower.includes('contrat') || qLower.includes('contact') || qLower.includes('hire') || qLower.includes('mensaje')) {
+    // 12. Metodologías (Scrum, Kanban, Waterfall, PMBOK, Agile)
+    if (qLower.includes('metodolog') || qLower.includes('scrum') || qLower.includes('kanban') || qLower.includes('agil') || qLower.includes('waterfall') || qLower.includes('pmbok') || qLower.includes('marco') || qLower.includes('framework')) {
       return isEs
-        ? 'Puedes contactar a Mario directamente a través de su correo magc2204@gmail.com, por LinkedIn, o agendando una conversación en la sección de contacto al final de esta página.'
-        : 'You can reach Mario directly via email at magc2204@gmail.com, via LinkedIn, or by scheduling a conversation in the contact section below.';
+        ? 'Mario es un Project Manager híbrido: domina marcos ágiles (Scrum, Kanban) para desarrollo iterativo y entregas rápidas con feedback continuo, complementado con las mejores prácticas tradicionales de PMBOK/Waterfall (WBS, matrices de riesgo, gestión de cronogramas y control presupuestal estricto).'
+        : 'Mario is a versatile hybrid PM: he leads Agile frameworks (Scrum, Kanban) for iterative delivery and continuous feedback, combined with PMBOK/Waterfall governance (WBS, risk mitigation matrices, critical path scheduling, and strict budget controls).';
     }
 
-    if (qLower.includes('como lidera') || qLower.includes('playbook') || qLower.includes('metodolog') || qLower.includes('entrega un proyecto') || qLower.includes('como trabajas') || qLower.includes('scrum') || qLower.includes('agil') || qLower.includes('kanban')) {
+    // 13. Herramientas y Software (Tools, Jira, Monday, ClickUp, Miro, GitHub, etc.)
+    if (qLower.includes('herramienta') || qLower.includes('software') || qLower.includes('tool') || qLower.includes('monday') || qLower.includes('clickup') || qLower.includes('trello') || qLower.includes('miro') || qLower.includes('figma') || qLower.includes('git') || qLower.includes('project')) {
+      return isEs
+        ? 'Mario domina: Jira, Monday.com, ClickUp, Trello, MS Project, GitLab / GitHub, Miro, Figma, Google Workspace y entornos de automatización con Python, VS Code y Google Apps Script.'
+        : 'Mario\'s toolbelt includes: Jira, Monday.com, ClickUp, Trello, MS Project, GitLab / GitHub, Miro, Figma, Google Workspace, plus development tooling like Python, VS Code, and Google Apps Script.';
+    }
+
+    // 14. Soft Skills & Liderazgo de Equipos
+    if (qLower.includes('lider') || qLower.includes('soft skill') || qLower.includes('habilidad') || qLower.includes('comunicac') || qLower.includes('negociac') || qLower.includes('equipo') || qLower.includes('problema') || qLower.includes('conflict')) {
+      return isEs
+        ? 'Sus principales soft skills son: liderazgo empático de squads multidisciplinarios, comunicación clara y asertiva entre negocio y desarrollo técnico, negociación constructiva con stakeholders/clientes ante cambios de alcance, y resolución ágil de bloqueos (<24 horas).'
+        : 'His standout soft skills include: empathetic leadership of cross-functional squads, bridge communication between business stakeholders and engineers, high-stakes scope negotiation, and proactive impediment clearing (<24h unblocking).';
+    }
+
+    // 15. Educación & Estudios (Carrera, BUAP, UVP)
+    if (qLower.includes('educa') || qLower.includes('estudio') || qLower.includes('universidad') || qLower.includes('buap') || qLower.includes('uvp') || qLower.includes('carrera') || qLower.includes('licenciatura') || qLower.includes('diplomado') || qLower.includes('degree')) {
+      return isEs
+        ? 'Mario es Licenciado en Ciencias de la Comunicación por la BUAP (Benemérita Universidad Autónoma de Puebla, 2014) y cuenta con un Diplomado en Gestión de Proyectos por la Universidad del Valle de Puebla (UVP, 2023), además de su certificación profesional en Scrum SFPC por CertiProf.'
+        : 'Mario holds a Bachelor\'s Degree in Communication Sciences from BUAP (2014) and a Postgraduate Specialization Diploma in Project Management from Universidad del Valle de Puebla (UVP, 2023), alongside his official Scrum Professional Certificate (SFPC) from CertiProf.';
+    }
+
+    // 16. Contacto / Correo / Teléfono / LinkedIn
+    if (qLower.includes('contacto') || qLower.includes('correo') || qLower.includes('email') || qLower.includes('telefono') || qLower.includes('teléfono') || qLower.includes('celular') || qLower.includes('whatsapp') || qLower.includes('linkedin') || qLower.includes('contrat') || qLower.includes('hire') || qLower.includes('llamada')) {
+      return isEs
+        ? 'Puedes contactar a Mario directamente por correo a magc2204@gmail.com, por teléfono/WhatsApp al +52 22 21 81 78 07, en su LinkedIn (linkedin.com/in/mario-g-b17aba151), o agendando una videollamada de 15 minutos en el botón de Calendly al pie de página.'
+        : 'You can reach Mario directly via email at magc2204@gmail.com, phone/WhatsApp at +52 22 21 81 78 07, on LinkedIn (linkedin.com/in/mario-g-b17aba151), or by scheduling a 15-min discovery call via the Calendly button at the bottom of the page.';
+    }
+
+    // 17. Playbook de entrega de proyectos
+    if (qLower.includes('como lidera') || qLower.includes('playbook') || qLower.includes('como trabaja') || qLower.includes('como gestiona') || qLower.includes('ciclo')) {
       return isEs
         ? 'El playbook de entrega de Mario consta de 4 fases clave: 1) Backlog & Refinamiento (Historias con DoD clara y sin ambigüedades); 2) Sprint Planning & Estimación (Story Points calibrados a la velocidad real del equipo); 3) Ejecución & Bloqueos <24h (Dailies enfocadas en dependencias y mitigación de riesgos con la PMO); 4) Reportes Automáticos & Entrega (Scripts en Python/Apps Script que ahorran 40% de tiempo y trazabilidad de calidad en Jira).'
         : 'Mario\'s delivery playbook follows 4 core stages: 1) Backlog & Refinement (Clear DoD without ambiguity); 2) Sprint Planning & Sizing (Calibrated to squad velocity); 3) Execution & Fast Unblocking (<24h impediment triage with stakeholders); 4) Automated Reporting & Delivery (Python/Apps Script pipelines saving 40% admin hours and full Jira defect traceability).';
     }
 
-    // Human and natural conversational fallback
+    // 18. Años de experiencia / Resumen general
+    if (qLower.includes('experiencia') || qLower.includes('años') || qLower.includes('trayectoria') || qLower.includes('resumen') || qLower.includes('perfil') || qLower.includes('summary')) {
+      return isEs
+        ? 'Mario cuenta con 7+ años de experiencia liderando proyectos tecnológicos y software. Su perfil destaca por la combinación única de gobernanza ágil (Scrum SFPC), gestión tradicional de presupuestos y riesgos, y capacidad técnica real para automatizar reportes y procesos con Python, Google Apps Script e Inteligencia Artificial.'
+        : 'Mario brings 7+ years of experience leading technology and software initiatives. His profile stands out by combining Agile governance (Scrum SFPC), PMBOK budget/risk discipline, and hands-on technical skills in Python, Google Apps Script, and AI Agent automation.';
+    }
+
+    // Human and natural conversational fallback with cat flair
     return isEs
-      ? `Comprendo tu pregunta. Sobre ese tema en específico, Mario siempre busca aportar valor práctico y soluciones medibles. Te sugiero preguntarme sobre su experiencia en Scrum (SFPC), su trabajo en GNP Seguros, sus automatizaciones en Python y Apps Script, o si lo prefieres, puedes agendar una llamada directa de 15 min con él en el botón de Calendly.`
-      : `I understand your question! On this topic, Mario always emphasizes practical value and measurable outcomes. Feel free to ask about his Scrum (SFPC) leadership, software delivery at GNP Seguros, Python/Apps Script automations, or schedule a direct 15-min discovery call via Calendly.`;
+      ? `¡Miau! 🐾 Como agente gatuno de Mario, conozco a fondo todo su CV. Puedo contarte sobre su nivel de inglés (B2 profesional), su trabajo en GNP Seguros con Badak, sus certificaciones (Scrum SFPC CertiProf), cómo automatiza reportes con Python y Apps Script, sus herramientas favoritas (Jira, Monday, ClickUp) o darte sus datos de contacto directo. ¿Cuál de estos te interesa más?`
+      : `Meow! 🐾 As Mario's feline agent, I know every detail of his resume. I can tell you about his English proficiency (B2 Upper-Intermediate), software factory leadership for GNP Seguros, Scrum SFPC certification, Python/Apps Script automations, tools (Jira, Monday, ClickUp), or share his direct contact info. What would you like to explore?`;
   };
 
   // Typewriter streaming effect
