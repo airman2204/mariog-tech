@@ -7,6 +7,9 @@ import BookingSection from '@/components/BookingSection';
 import Footer from '@/components/Footer';
 import { LanguageProvider } from '@/context/LanguageContext';
 
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+
 function App() {
   return (
     <LanguageProvider>
@@ -20,6 +23,8 @@ function App() {
           <BookingSection />
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </div>
     </LanguageProvider>
   );
