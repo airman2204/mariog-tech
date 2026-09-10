@@ -130,17 +130,13 @@ export default function CaseStudies() {
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-sm font-bold uppercase tracking-wider mb-4 text-cyan-400 border border-cyan-500/20">
-            <Award className="w-4 h-4" />
-            {isEs ? 'Casos de Éxito & Resultados STAR' : 'Case Studies & STAR Results'}
-          </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3">
             {isEs ? 'Impacto Cuantificable en' : 'Quantifiable Business'} <span className="gradient-text-mix">{isEs ? 'Proyectos Reales' : 'Impact'}</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
             {isEs
-              ? 'Resultados demostrables mediante el marco STAR (Situación, Tarea, Acción, Resultado) en empresas de software y sector asegurador.'
-              : 'Measurable outcomes structured via the STAR method across software factories and enterprise insurance environments.'}
+              ? 'Resultados demostrables mediante el marco STAR (Situación, Tarea, Acción, Resultado).'
+              : 'Measurable outcomes structured via the STAR method (Situation, Task, Action, Result).'}
           </p>
         </div>
 
