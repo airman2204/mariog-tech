@@ -572,12 +572,9 @@ export default function KanbanBoard() {
                 <div className="relative group">
                   <div className="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-gradient-to-tr from-cyan-500 to-purple-600 border-4 border-[#0d1230] shadow-md shadow-cyan-500/50" />
                   <div className="glass-card rounded-2xl p-6 border border-cyan-500/20 hover:border-cyan-400/40 transition-all">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div className="mb-2">
                       <span className="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
                         {language === 'es' ? 'Ene 2024 – Sep 2026' : 'Jan 2024 – Sep 2026'}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-green-500/15 text-green-400 border border-green-500/30">
-                        {language === 'es' ? 'Fábrica de Software' : 'Software Factory'}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-1">
@@ -604,12 +601,9 @@ export default function KanbanBoard() {
                 <div className="relative group">
                   <div className="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-pink-600 border-4 border-[#0d1230] shadow-md shadow-purple-500/50" />
                   <div className="glass-card rounded-2xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div className="mb-2">
                       <span className="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">
                         {language === 'es' ? 'Dic 2020 – Nov 2023' : 'Dec 2020 – Nov 2023'}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-purple-500/15 text-purple-400 border border-purple-500/30">
-                        Tech Scaling
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-1">
@@ -636,12 +630,9 @@ export default function KanbanBoard() {
                 <div className="relative group">
                   <div className="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-orange-600 border-4 border-[#0d1230] shadow-md shadow-orange-500/50" />
                   <div className="glass-card rounded-2xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div className="mb-2">
                       <span className="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-orange-500/20 text-orange-300 border border-orange-500/30">
                         {language === 'es' ? 'Ago 2018 – Nov 2020' : 'Aug 2018 – Nov 2020'}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-orange-500/15 text-orange-400 border border-orange-500/30">
-                        Digital Delivery
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-1">
@@ -667,12 +658,9 @@ export default function KanbanBoard() {
                 <div className="relative group">
                   <div className="absolute -left-[33px] sm:-left-[49px] top-1.5 w-6 h-6 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 border-4 border-[#0d1230] shadow-md shadow-emerald-500/50" />
                   <div className="glass-card rounded-2xl p-6 border border-emerald-500/20 hover:border-emerald-400/40 transition-all">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div className="mb-2">
                       <span className="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                         {language === 'es' ? 'Certificaciones & Formación' : 'Certifications & Degrees'}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded text-xs font-semibold bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
-                        {language === 'es' ? 'Credenciales Oficiales' : 'Verified Credentials'}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-3">
