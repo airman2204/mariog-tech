@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0a0e27;
+  --navy-light: #131836;
+  --navy-card: #1a1f3d;
+  --cyan: #06b6d4;
+  --purple: #8b5cf6;
+  --orange: #f97316;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background-color: var(--navy);
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* ========== BACKGROUND ========== */
+.bg-mission-control {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(249, 115, 22, 0.08) 0%, transparent 50%),
+    #0a0e27;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ========== GLASSMORPHISM ========== */
+.glass {
+  background: rgba(26, 31, 61, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(26, 31, 61, 0.8), rgba(19, 24, 54, 0.6));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-hover:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.15);
+}
+
+/* ========== GRADIENT TEXT ========== */
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-orange {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-mix {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ========== GLOW EFFECTS ========== */
+.glow-cyan { box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
+.glow-purple { box-shadow: 0 0 30px rgba(139, 92, 246, 0.3); }
+.glow-orange { box-shadow: 0 0 30px rgba(249, 115, 22, 0.3); }
+
+.text-glow-cyan { text-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+.text-glow-purple { text-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+
+/* ========== FLOATING ANIMATION ========== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.float-anim { animation: float 4s ease-in-out infinite; }
+.float-anim-slow { animation: float 6s ease-in-out infinite; }
+
+/* ========== PULSE GLOW ========== */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(6, 182, 212, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+}
+.pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+@keyframes pulse-ring-purple {
+  0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(139, 92, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+}
+.pulse-ring-purple { animation: pulse-ring-purple 2s ease-out infinite; }
+
+/* ========== SPIN GEAR ========== */
+@keyframes spin-cw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-ccw { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+.spin-slow { animation: spin-cw 20s linear infinite; }
+.spin-slow-rev { animation: spin-ccw 16s linear infinite; }
+.spin-medium { animation: spin-cw 12s linear infinite; }
+
+/* ========== BLINK ========== */
+@keyframes blink-light {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.blink { animation: blink-light 1.5s ease-in-out infinite; }
+.blink-slow { animation: blink-light 2.5s ease-in-out infinite; }
+
+/* ========== SCAN LINE ========== */
+@keyframes scan-line {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+  animation: scan-line 3s ease-in-out infinite;
+}
+
+/* ========== SLIDE UP REVEAL ========== */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.slide-up { animation: slide-up 0.8s ease-out forwards; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== BUTTON 3D ========== */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+.btn-glow:hover::before {
+  left: 100%;
+}
+.btn-glow:hover {
+  transform: translateY(-2px);
+}
+.btn-glow:active {
+  transform: translateY(0px);
+}
+
+/* ========== KANBAN TICKET DRAG ========== */
+.kanban-ticket {
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+.kanban-ticket:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+.kanban-ticket:active {
+  cursor: grabbing;
+}
+
+/* ========== GEAR SHAPE ========== */
+.gear-shape {
+  clip-path: polygon(
+    50% 0%, 58% 8%, 70% 5%, 75% 17%, 87% 22%, 83% 35%, 95% 42%,
+    88% 50%, 95% 58%, 83% 65%, 87% 78%, 75% 83%, 70% 95%, 58% 92%,
+    50% 100%, 42% 92%, 30% 95%, 25% 83%, 13% 78%, 17% 65%, 5% 58%,
+    12% 50%, 5% 42%, 17% 35%, 13% 22%, 25% 17%, 30% 5%, 42% 8%
+  );
+}
+
+/* ========== HEXAGON ========== */
+.hexagon {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* ========== COUNTER ANIMATION ========== */
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ========== ORBIT ========== */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+.orbit-anim { animation: orbit 15s linear infinite; }
+
+/* ========== CUSTOM SCROLLBAR ========== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0e27; }
+::-webkit-scrollbar-thumb { background: #1a1f3d; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+
+/* ========== DASHED CIRCLE ROTATION ========== */
+@keyframes dash-rotate { to { stroke-dashoffset: -200; } }
+.dash-anim { animation: dash-rotate 6s linear infinite; }
+
+/* ========== PROGRESS BAR FILL ========== */
+@keyframes bar-fill {
+  from { width: 0%; }
+  to { width: var(--fill-width, 100%); }
+}
+.bar-fill-anim {
+  animation: bar-fill 1.5s ease-out forwards;
+}
+
+/* ========== BUBBLE ========== */
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  20% { opacity: 0.7; }
+  100% { transform: translateY(-40px) scale(1); opacity: 0; }
+}
+.bubble { animation: bubble-rise 3s ease-in-out infinite; }
+
+/* ========== AVATAR LIFE ANIMATIONS ========== */
+@keyframes avatar-breathe {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.015);
+  }
+}
+
+@keyframes hand-wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20%, 60% {
+    transform: rotate(14deg) translateY(-4px);
+  }
+  40%, 80% {
+    transform: rotate(-10deg) translateY(0px);
+  }
+}
+
+@keyframes eye-blink {
+  0%, 90%, 100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+  92%, 96% {
+    transform: scaleY(0.1);
+    opacity: 0.95;
+  }
+}
+
+.avatar-alive {
+  animation: avatar-breathe 4s ease-in-out infinite;
+}
+
+.hand-waving {
+  transform-origin: 32% 46%;
+  animation: hand-wave 3.5s ease-in-out infinite;
+}
+
+.blinking-eyelid {
+  animation: eye-blink 4s infinite;
+}
+
+/* ========== STAR WARS HOLOGRAM EFFECT ========== */
+/* 1. Initial Materialization from Projector Disc */
+@keyframes holo-materialize {
+  0% {
+    transform: translateY(70px) scale(0.15, 0.05);
+    opacity: 0;
+    filter: brightness(3) contrast(2) drop-shadow(0 0 40px #06b6d4) blur(12px);
+  }
+  25% {
+    transform: translateY(35px) scale(0.6, 0.4);
+    opacity: 0.6;
+    filter: brightness(2.5) drop-shadow(0 0 35px #06b6d4) blur(6px);
+  }
+  50% {
+    transform: translateY(10px) scale(0.95, 1.05);
+    opacity: 0.85;
+    filter: brightness(1.8) drop-shadow(0 0 28px #06b6d4) blur(2px);
+  }
+  70% {
+    transform: translateY(-5px) scale(1.02, 0.98);
+    opacity: 0.95;
+    filter: brightness(1.3) drop-shadow(0 0 22px #06b6d4) blur(0px);
+  }
+  100% {
+    transform: translateY(0px) scale(1, 1);
+    opacity: 0.94;
+    filter: brightness(1) drop-shadow(0 0 16px rgba(6, 182, 212, 0.75)) drop-shadow(0 0 32px rgba(14, 165, 233, 0.35));
+  }
+}
+
+/* 2. Continuous Ambient Floating Loop */
+@keyframes holo-float {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0.94;
+    filter: drop-shadow(0 0 16px rgba(6, 182, 212, 0.75)) drop-shadow(0 0 32px rgba(14, 165, 233, 0.35));
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 22px rgba(6, 182, 212, 0.88)) drop-shadow(0 0 42px rgba(14, 165, 233, 0.45));
+  }
+}
+
+.hologram-spawn {
+  animation: holo-materialize 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: 50% 100%;
+}
+
+.hologram-character {
+  animation: holo-float 5s ease-in-out infinite;
+  animation-delay: 1.4s;
+  position: relative;
+  z-index: 10;
+  will-change: transform, filter, opacity;
+}
+
+/* Interlaced scanline texture overlay */
+.hologram-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(6, 182, 212, 0.18) 0px,
+    rgba(6, 182, 212, 0.18) 1.5px,
+    transparent 1.5px,
+    transparent 3.5px
+  );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Sweeping hologram beam */
+.hologram-beam {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(6, 182, 212, 0.05) 30%,
+    rgba(56, 189, 248, 0.35) 50%,
+    rgba(6, 182, 212, 0.05) 70%,
+    transparent 100%
+  );
+  animation: holo-scanline 3.5s linear infinite;
+  pointer-events: none;
+}
+
+/* ========== PLAYFUL CAT ON KANBAN BOARD ========== */
+@keyframes cat-play {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  20% {
+    transform: translateY(4px) rotate(-1.5deg);
+  }
+  35% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(7px) rotate(-3deg);
+  }
+  65% {
+    transform: translateY(1px) rotate(0deg);
+  }
+  80% {
+    transform: translateY(5px) rotate(-2deg);
+  }
+}
+
+.cat-playful {
+  animation: cat-play 4.5s ease-in-out infinite;
+  transform-origin: 75% 20%;
+  will-change: transform;
+}
+
+
