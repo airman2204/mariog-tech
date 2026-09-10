@@ -71,6 +71,29 @@ export default function CaseStudies() {
       stack: ['Scrum (SFPC)', 'Agentes IA', 'Python', 'CRM Automation', 'Kanban'],
     },
     {
+      id: 'jira-incidents',
+      client: isEs ? 'Gestión de Calidad & SLA (GNP / PMO)' : 'Quality Assurance & SLAs (GNP / PMO)',
+      role: 'IT Project Manager & Automation Lead',
+      period: '2024 - 2025',
+      badge: isEs ? 'Automatización Jira & SLAs' : 'Jira Automation & SLAs',
+      badgeColor: '#f59e0b',
+      title: isEs
+        ? 'Automatización en Jira: Priorización, Trazabilidad y Negociación de Incidentes'
+        : 'Jira Incident Automation: SLA Prioritization, Traceability & Code Quality',
+      metric: '100%',
+      metricLabel: isEs ? 'Transparencia de incidentes & SLAs' : 'Incident traceability & stakeholder alignment',
+      situation: isEs
+        ? 'Discrepancias frecuentes entre áreas técnicas y de negocio sobre la causa raíz de retrasos y calidad de código, debido a la falta de trazabilidad clara y priorización manual de defectos en Jira.'
+        : 'Frequent friction between technical teams and business stakeholders regarding root causes of delays and code defects due to manual triage and lack of clear traceability in Jira.',
+      action: isEs
+        ? 'Desarrollé e implementé scripts automatizados en Jira para categorizar y priorizar incidentes en tiempo real, generando un análisis exhaustivo de trazabilidad (tiempo en ciclo, responsable y origen del defecto).'
+        : 'Engineered automated Jira scripts to dynamically categorize and triage incidents in real time, producing rigorous traceability audits (cycle time, owner, and root-cause classification).',
+      result: isEs
+        ? 'Total transparencia y respaldo de datos objetivos para negociar desviaciones de tiempo y calidad con stakeholders, resolviendo bloqueos sin fricciones y blindando al equipo de desarrollo.'
+        : 'Objective data-backed transparency for negotiating project delays and code quality disputes with stakeholders, eliminating ambiguity and protecting engineering sprints.',
+      stack: ['Jira Scripts', 'Python', 'SLA Management', 'Root Cause Analysis', 'QA Governance'],
+    },
+    {
       id: 'multimedia',
       client: isEs ? 'Proyectos Multimedia & Interactivos' : 'Interactive Multimedia Ventures',
       role: 'Lead Project Manager',

@@ -100,6 +100,12 @@ export default function AiCopilot() {
         : 'At Niku Tecnología (2020 - 2023), he implemented the Scrum framework boosting team delivery velocity by 30%. He also integrated AI agents and Python / Apps Script pipelines to automate CRM data management and task tracking.';
     }
 
+    if (qLower.includes('incidente') || qLower.includes('incident') || qLower.includes('jira') || qLower.includes('defecto') || qLower.includes('bug') || qLower.includes('trazabilidad') || qLower.includes('sla') || qLower.includes('calidad')) {
+      return isEs
+        ? 'Un caso de éxito clave de Mario fue automatizar el seguimiento de incidentes en Jira mediante scripts: logró priorización en tiempo real y una trazabilidad profunda (tiempo de ciclo, causa raíz y área responsable). Esto brindó total transparencia con la PMO y clientes, facilitando negociaciones objetivas ante atrasos y asegurando estándares de calidad de código sin fricciones.'
+        : 'A standout success of Mario was automating Jira incident management via custom scripts: he enabled real-time triage and in-depth defect traceability (cycle times, root causes, and owner accountability). This delivered 100% transparency for the PMO and clients, empowering data-driven negotiations over delivery delays and code quality.';
+    }
+
     if (qLower.includes('automatiz') || qLower.includes('script') || qLower.includes('python') || qLower.includes('apps script') || qLower.includes('google')) {
       return isEs
         ? 'Mario es especialista en automatización operativa: diseñó pipelines con Google Apps Script y Python que redujeron un 40% el tiempo de generación de reportes semanales y seguimiento de clientes, garantizando cero errores humanos en reporteo ejecutivo.'
