@@ -305,9 +305,6 @@ export default function AiCopilot() {
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3">
             {t.copilot.title} <span className="gradient-text-mix">{t.copilot.titleHighlight}</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            {t.copilot.subtitle}
-          </p>
         </div>
 
         {/* Chat layout */}
