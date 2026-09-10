@@ -46,35 +46,35 @@ export default function AiCopilot() {
     const qLower = question.toLowerCase().trim();
     const isEs = language === 'es';
 
-    // 1. Conversational Greetings & Small Talk (Human, friendly & warm)
-    if (/^(hola|buenos d[ií]as|buenas tardes|buenas noches|hey|qu[eé] tal|c[oó]mo est[aá]s|saludos|que onda|buenas)/i.test(qLower)) {
+    // 1. Conversational Greetings & Small Talk (Lua the cat's charming perspective)
+    if (/^(hola|buenos d[ií]as|buenas tardes|buenas noches|hey|qu[eé] tal|c[oó]mo est[aá]s|saludos|que onda|buenas|miau|miau miau)/i.test(qLower)) {
       return isEs
-        ? '¡Hola! Qué gusto saludarte. Soy el asistente virtual de Mario. ¿Cómo estás hoy? Cuéntame, ¿hay algo específico que te gustaría saber sobre su experiencia en gestión de proyectos, Scrum o automatización con IA?'
-        : 'Hello there! Great to meet you. I am Mario\'s virtual assistant. How can I help you today? Feel free to ask anything about his project management background, Scrum leadership, or AI automation projects!';
+        ? '¡Miau! 🐾 Hola humano. Soy Lua, la gata de Mario. Siempre estoy sentada en su escritorio mientras él dirige sprints y programa scripts. Me sé todos sus trucos y secretos de trabajo. ¿Qué quieres saber de mi humano favorito?'
+        : 'Meow! 🐾 Hello human! I am Lua, Mario\'s cat. I supervise him from his desk during every single sprint and script execution. I know all his work habits and secrets. What would you like to know about my favorite human?';
     }
 
     if (/^(gracias|muchas gracias|agradecido|thanks|thank you|thx)/i.test(qLower)) {
       return isEs
-        ? '¡De nada! Es un placer ayudarte. Si necesitas consultar algo más o deseas agendar una llamada directa con Mario, avísame con toda confianza.'
-        : 'You are very welcome! If you have any other questions or would like to schedule a direct chat with Mario, just let me know.';
+        ? '¡De nada! *ronronea felizmente* 😸 Si quieres saber más o quieres agendar una entrevista con Mario para tu equipo, pregúntame o dale clic a su botón de Calendly.'
+        : 'You are very welcome! *purrs happily* 😸 If you want to know more or want to book an interview with Mario for your team, feel free to ask or click his Calendly link!';
     }
 
     if (/^(adi[oó]s|hasta luego|bye|chao|nos vemos|goodbye)/i.test(qLower)) {
       return isEs
-        ? '¡Hasta luego! Muchas gracias por tomarte el tiempo de visitar el portafolio de Mario. Que tengas un excelente día. 👋'
-        : 'Goodbye! Thank you for taking the time to explore Mario\'s portfolio. Have a wonderful day ahead! 👋';
+        ? '¡Hasta luego! Me voy a tomar una siesta sobre el teclado de Mario mientras él sigue trabajando. ¡Mucho éxito y gracias por visitarnos! 🐾💤'
+        : 'Goodbye! I\'m heading for a quick nap on Mario\'s keyboard while he keeps coding. Best of luck and thank you for stopping by! 🐾💤';
     }
 
-    if (/^(qui[eé]n eres|qui[eé]n es mario|cu[aá]ntame de ti|who are you|about you)/i.test(qLower)) {
+    if (/^(qui[eé]n eres|qui[eé]n es lua|qui[eé]n es mario|cu[aá]ntame de ti|who are you|about you|secretos)/i.test(qLower)) {
       return isEs
-        ? '¡Con gusto! Soy el asistente inteligente de Mario González. Mario es un IT Project Manager con más de 7 años de experiencia liderando equipos de software, certificado en Scrum (SFPC) y apasionado por resolver problemas reales con automatizaciones en Python, Google Apps Script e Inteligencia Artificial.'
-        : 'Glad to share! I am Mario González\'s AI assistant. Mario is an IT Project Manager with 7+ years of experience leading engineering squads, certified in Scrum (SFPC), and passionate about building real-world automated pipelines with Python, Apps Script, and AI Agents.';
+        ? '¡Te cuento! 🐾 Soy Lua, la gata tricolor y copiloto oficial de Mario. ¿Un secreto suyo? No tolera las reuniones eternas ni el trabajo manual repetitivo: si una tarea toma más de 10 minutos al día, ¡de inmediato le escribe un script en Python o un agente de IA para automatizarla! Lleva 7 años en software, está certificado en Scrum y su lema es entregar a tiempo y sin fricción.'
+        : 'Let me tell you! 🐾 I am Lua, Mario\'s calico desk companion. A secret about him? He hates endless meetings and repetitive busywork: if a task takes more than 10 minutes a day, he immediately writes a Python script or spins up an AI Agent to automate it! He has 7+ years in software, is Scrum certified (SFPC), and ensures deliverables ship on schedule.';
     }
 
     if (/(qu[eé] haces|para qu[eé] sirves|ayuda|help)/i.test(qLower)) {
       return isEs
-        ? 'Estoy aquí para responder cualquier duda sobre la trayectoria de Mario: sus proyectos en GNP Seguros y Niku Tech, sus certificaciones, su forma de liderar sprints o cómo automatiza procesos para ahorrar hasta un 40% de tiempo. ¿Qué te gustaría explorar?'
-        : 'I\'m here to answer any questions about Mario\'s career: his projects at GNP Seguros and Niku Tech, his Scrum certifications, his agile leadership style, or how he automates operations. What would you like to explore?';
+        ? 'Superviso que Mario trabaje feliz y te cuento con total honestidad sobre sus proyectos (como cuando redujo 40% del reporteo en Badak para GNP Seguros o aceleró 30% a su squad en Niku Tech). Puedes preguntarme de sus certificaciones, su forma de liderar o cómo contactarlo. 🐾'
+        : 'I make sure Mario stays focused and I share honest insights about his projects (like when he cut 40% reporting time at Badak for GNP Seguros, or boosted squad velocity by 30% at Niku Tech). Ask me about his certifications, leadership, or how to reach him! 🐾';
     }
 
     // Direct match with preset questions
@@ -235,16 +235,18 @@ export default function AiCopilot() {
                 {/* Pure Holographic Character Materializing from the bottom */}
                 <div className="relative z-10 flex items-end justify-center max-h-[270px] hologram-spawn">
                   <img
-                    src="/agente.png"
-                    alt="Mario González Agente IA Holográfico"
-                    className="hologram-character max-h-[270px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    src="/gato.png"
+                    alt="Lua la gata de Mario - Agente IA Holográfico"
+                    className="hologram-character max-h-[260px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_10px_25px_rgba(6,182,212,0.4)]"
                   />
                 </div>
               </div>
 
               {/* Agent info */}
               <div className="text-center relative z-10 pt-2 border-t border-white/10 w-full">
-                <h3 className="font-display font-bold text-white text-base">Mario González AI</h3>
+                <h3 className="font-display font-bold text-white text-base flex items-center justify-center gap-1.5">
+                  Lua 🐾 <span className="text-xs text-cyan-400 font-normal">({language === 'en' ? "Mario's Cat" : 'La gata de Mario'})</span>
+                </h3>
               </div>
             </div>
 
@@ -332,8 +334,8 @@ export default function AiCopilot() {
             <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
               <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5 shadow-md shadow-cyan-500/20">
                 <img
-                  src="/agente.png"
-                  alt="Mario González AI"
+                  src="/gato.png"
+                  alt="Lua 🐾"
                   className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                 />
                 <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#1a1f3d]" />
@@ -364,8 +366,8 @@ export default function AiCopilot() {
                       <User className="w-4 h-4 text-white" />
                     ) : (
                       <img
-                        src="/agente.png"
-                        alt="Mario"
+                        src="/gato.png"
+                        alt="Lua 🐾"
                         className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                       />
                     )}
@@ -387,8 +389,8 @@ export default function AiCopilot() {
                 <div className="flex gap-2.5 max-w-[85%]">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5">
                     <img
-                      src="/agente.png"
-                      alt="Mario"
+                      src="/gato.png"
+                      alt="Lua 🐾"
                       className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                     />
                   </div>
@@ -404,8 +406,8 @@ export default function AiCopilot() {
                 <div className="flex gap-2.5">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5">
                     <img
-                      src="/agente.png"
-                      alt="Mario"
+                      src="/gato.png"
+                      alt="Lua 🐾"
                       className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                     />
                   </div>
