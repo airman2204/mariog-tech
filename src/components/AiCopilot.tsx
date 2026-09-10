@@ -130,10 +130,10 @@ export default function AiCopilot() {
         : 'You can reach Mario directly via email at magc2204@gmail.com, via LinkedIn, or by scheduling a conversation in the contact section below.';
     }
 
-    if (qLower.includes('scrum') || qLower.includes('agil') || qLower.includes('kanban') || qLower.includes('metodolog') || qLower.includes('pmbok') || qLower.includes('waterfall')) {
+    if (qLower.includes('como lidera') || qLower.includes('playbook') || qLower.includes('metodolog') || qLower.includes('entrega un proyecto') || qLower.includes('como trabajas') || qLower.includes('scrum') || qLower.includes('agil') || qLower.includes('kanban')) {
       return isEs
-        ? 'Mario domina tanto metodologías ágiles (Scrum, Kanban) como tradicionales (PMBOK/Cascada). Ha liderado ceremonias diarias, retrospectivas, WBS, matrices de riesgo, y gestión de alcance y presupuestos para proyectos de alto impacto.'
-        : 'Mario is proficient in both Agile (Scrum, Kanban) and Traditional governance (PMBOK/Waterfall). He has led daily standups, retrospectives, WBS planning, risk matrices, and scope & budget governance for high-impact initiatives.';
+        ? 'El playbook de entrega de Mario consta de 4 fases clave: 1) Backlog & Refinamiento (Historias con DoD clara y sin ambigüedades); 2) Sprint Planning & Estimación (Story Points calibrados a la velocidad real del equipo); 3) Ejecución & Bloqueos <24h (Dailies enfocadas en dependencias y mitigación de riesgos con la PMO); 4) Reportes Automáticos & Entrega (Scripts en Python/Apps Script que ahorran 40% de tiempo y trazabilidad de calidad en Jira).'
+        : 'Mario\'s delivery playbook follows 4 core stages: 1) Backlog & Refinement (Clear DoD without ambiguity); 2) Sprint Planning & Sizing (Calibrated to squad velocity); 3) Execution & Fast Unblocking (<24h impediment triage with stakeholders); 4) Automated Reporting & Delivery (Python/Apps Script pipelines saving 40% admin hours and full Jira defect traceability).';
     }
 
     // Human and natural conversational fallback
@@ -299,16 +299,16 @@ export default function AiCopilot() {
                     ]
                   : [
                       {
+                        label: language === 'es' ? '¿Cómo lidera y entrega un proyecto?' : 'How does he lead and deliver projects?',
+                        q: language === 'es' ? '¿Cuál es el playbook o metodología de entrega de Mario?' : 'What is Mario\'s delivery playbook and methodology?'
+                      },
+                      {
                         label: language === 'es' ? '¿Cómo automatiza el reporteo?' : 'How does he automate reporting?',
                         q: language === 'es' ? '¿Cómo automatiza Mario el seguimiento y reporteo?' : 'How does Mario automate tracking and reporting?'
                       },
                       {
                         label: language === 'es' ? '¿Flujos de IA & LangFlow?' : 'AI Agents & LangFlow flows?',
                         q: language === 'es' ? '¿Qué herramientas de IA y scripting utiliza?' : 'What AI tools and scripting does Mario use?'
-                      },
-                      {
-                        label: language === 'es' ? '¿Experiencia en GNP Seguros?' : 'Experience at GNP Seguros?',
-                        q: language === 'es' ? 'Cuéntame de tu experiencia en GNP Seguros' : 'Tell me about your experience at GNP Seguros'
                       }
                     ]
                 ).map((qItem) => (

@@ -5,7 +5,6 @@ import RoleFitMatcher from '@/components/RoleFitMatcher';
 import SprintMetrics from '@/components/SprintMetrics';
 import KanbanBoard from '@/components/KanbanBoard';
 import CaseStudies from '@/components/CaseStudies';
-import DeliveryPlaybook from '@/components/DeliveryPlaybook';
 import AiCopilot from '@/components/AiCopilot';
 import BookingSection from '@/components/BookingSection';
 import MobileContactBar from '@/components/MobileContactBar';
@@ -27,7 +26,6 @@ function App() {
           <SprintMetrics />
           <KanbanBoard />
           <CaseStudies />
-          <DeliveryPlaybook />
           <AiCopilot />
           <BookingSection />
         </main>
