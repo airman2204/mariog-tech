@@ -7,8 +7,8 @@ export default function ExecutiveSnapshot() {
 
   return (
     <div className="relative max-w-7xl mx-auto px-6 -mt-6 sm:-mt-10 mb-14 z-20">
-      <div className="glass-card rounded-2xl p-4 sm:p-5 border border-cyan-500/30 bg-[#0c112e]/90 shadow-xl shadow-cyan-500/10 backdrop-blur-xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
+      <div className="glass-card rounded-2xl p-3 sm:p-5 border border-cyan-500/30 bg-[#0c112e]/90 shadow-xl shadow-cyan-500/10 backdrop-blur-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:divide-x divide-white/10">
           
           {/* Card 1: Experience */}
           <div className="flex items-center gap-3 pt-2 md:pt-0 md:px-3">

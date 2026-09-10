@@ -21,20 +21,20 @@ export default function Hero() {
       <div className="absolute top-1/4 -left-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-      {/* Project management signal icons */}
-      <div className="absolute top-[18%] right-[6%] float-anim opacity-80">
+      {/* Project management signal icons (Hidden on mobile to avoid overlapping with text) */}
+      <div className="hidden sm:block absolute top-[18%] right-[6%] float-anim opacity-80">
         <div className="flex items-center gap-2 px-3 py-2 glass rounded-xl border border-cyan-400/20">
           <CalendarDays className="w-5 h-5 text-cyan-400" />
           <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-300">Sprint plan</span>
         </div>
       </div>
-      <div className="absolute bottom-[18%] left-[4%] float-anim-slow opacity-80">
+      <div className="hidden sm:block absolute bottom-[18%] left-[4%] float-anim-slow opacity-80">
         <div className="flex items-center gap-2 px-3 py-2 glass rounded-xl border border-purple-400/20">
           <Users className="w-5 h-5 text-purple-400" />
           <span className="text-[10px] font-bold uppercase tracking-wider text-purple-300">Team sync</span>
         </div>
       </div>
-      <div className="absolute top-[55%] right-[2%] float-anim opacity-80" style={{ animationDelay: '1s' }}>
+      <div className="hidden sm:block absolute top-[55%] right-[2%] float-anim opacity-80" style={{ animationDelay: '1s' }}>
         <div className="flex items-center gap-2 px-3 py-2 glass rounded-xl border border-orange-400/20">
           <Target className="w-5 h-5 text-orange-400" />
           <span className="text-[10px] font-bold uppercase tracking-wider text-orange-300">Delivery goal</span>
@@ -110,7 +110,7 @@ export default function Hero() {
         {/* Right: 3D Command Center */}
         <div className="relative order-1 lg:order-2 h-full flex items-center justify-center">
           {/* Holographic platform */}
-          <div className="relative w-full h-full min-h-[500px] lg:min-h-[580px] flex items-center justify-center">
+          <div className="relative w-full h-full min-h-[320px] sm:min-h-[440px] lg:min-h-[580px] flex items-center justify-center">
             {/* Glow disc */}
             <div className="absolute bottom-4 w-72 h-20 bg-cyan-500/25 rounded-full blur-3xl" />
             <div className="absolute bottom-4 w-56 h-16 bg-purple-500/25 rounded-full blur-2xl" />

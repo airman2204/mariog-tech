@@ -311,8 +311,8 @@ export default function AiCopilot() {
         <div className="grid md:grid-cols-[310px_1fr] gap-6 items-start">
           {/* Left: Interactive 3D Avatar Host + Quick Questions */}
           <div className="flex flex-col gap-4">
-            {/* 3D Character Podium */}
-            <div className="glass-card rounded-3xl p-5 flex flex-col items-center relative overflow-hidden group border border-cyan-500/30">
+            {/* 3D Character Podium (Hidden on mobile to optimize vertical scrolling and focus on chat) */}
+            <div className="hidden md:flex glass-card rounded-3xl p-5 flex-col items-center relative overflow-hidden group border border-cyan-500/30">
               {/* Background radial glow */}
               <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/15 via-purple-500/10 to-transparent blur-xl pointer-events-none" />
 

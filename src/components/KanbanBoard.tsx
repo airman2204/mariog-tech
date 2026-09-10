@@ -372,9 +372,9 @@ export default function KanbanBoard() {
                 </button>
               </div>
 
-              {/* Quick Filter buttons (only for kanban view) */}
+              {/* Quick Filter buttons (only for kanban view, hidden on xs screens to prevent UI clutter) */}
               {viewMode === 'kanban' && (
-                <div className="flex flex-wrap items-center gap-1.5">
+                <div className="hidden sm:flex flex-wrap items-center gap-1.5">
                   <button
                     onClick={() => { playSound('click'); setActiveFilter('all'); }}
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
