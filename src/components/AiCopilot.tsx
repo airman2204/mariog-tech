@@ -259,12 +259,38 @@ export default function AiCopilot() {
     }, 18);
   };
 
-  const sendMessage = (text: string) => {
+  const sendMessage = async (text: string) => {
     playSound('click');
-    setMessages((prev) => [...prev, { role: 'user', text }]);
-    const response = getResponse(text);
+    const newMessages = [...messages, { role: 'user' as const, text }];
+    setMessages(newMessages);
+    setIsTyping(true);
+
+    try {
+      // 1. Attempt to consult Google Gemini via Vercel Serverless Function
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: newMessages.slice(-6),
+          userMessage: text,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.reply && !data.fallback) {
+          typeText(data.reply);
+          return;
+        }
+      }
+    } catch {
+      // Fallback silently if offline, in local dev without Vercel Edge, or API key missing
+    }
+
+    // 2. High-reliability fallback (local verified CV engine)
+    const localResponse = getResponse(text);
     setTimeout(() => {
-      typeText(response);
+      typeText(localResponse);
     }, 450);
   };
 
