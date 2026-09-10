@@ -46,11 +46,11 @@ export default function AiCopilot() {
     const qLower = question.toLowerCase().trim();
     const isEs = language === 'es';
 
-    // 1. Conversational Greetings & Small Talk (Lua the cat's charming perspective)
+    // 1. Conversational Greetings & Small Talk (Lua's charming perspective)
     if (/^(hola|buenos d[ií]as|buenas tardes|buenas noches|hey|qu[eé] tal|c[oó]mo est[aá]s|saludos|que onda|buenas|miau|miau miau)/i.test(qLower)) {
       return isEs
-        ? '¡Miau! 🐾 Hola humano. Soy Lua, la gata de Mario. Siempre estoy sentada en su escritorio mientras él dirige sprints y programa scripts. Me sé todos sus trucos y secretos de trabajo. ¿Qué quieres saber de mi humano favorito?'
-        : 'Meow! 🐾 Hello human! I am Lua, Mario\'s cat. I supervise him from his desk during every single sprint and script execution. I know all his work habits and secrets. What would you like to know about my favorite human?';
+        ? '¡Miau! 🐾 Hola. Soy Lua, la copiloto de Mario. Siempre estoy en su escritorio mientras él dirige sprints y programa scripts. Me sé todos sus trucos y cómo trabaja. ¿Qué quieres saber sobre sus proyectos o experiencia?'
+        : 'Meow! 🐾 Hello! I am Lua, Mario\'s copilot. I supervise him from his desk during every single sprint and script execution. I know all his work habits and methods. What would you like to know about his projects or experience?';
     }
 
     if (/^(gracias|muchas gracias|agradecido|thanks|thank you|thx)/i.test(qLower)) {
@@ -245,7 +245,7 @@ export default function AiCopilot() {
               {/* Agent info */}
               <div className="text-center relative z-10 pt-2 border-t border-white/10 w-full">
                 <h3 className="font-display font-bold text-white text-base flex items-center justify-center gap-1.5">
-                  Lua 🐾 <span className="text-xs text-cyan-400 font-normal">({language === 'en' ? "Mario's Cat" : 'La gata de Mario'})</span>
+                  Lua 🐾 <span className="text-xs text-cyan-400 font-normal">({language === 'en' ? 'AI Copilot' : 'Copiloto IA'})</span>
                 </h3>
               </div>
             </div>
