@@ -77,15 +77,16 @@ export default function BookingSection() {
                 {isEs ? 'Acciones Rápidas' : 'Quick Actions'}
               </p>
 
-              {/* Mailto Direct Button */}
+              {/* Calendly Direct Scheduling Button */}
               <a
-                href={`mailto:${portfolioData.contact.email}?subject=${encodeURIComponent(
-                  isEs ? 'Oportunidad Laboral / Contacto Mario González' : 'Job Opportunity / Contact Mario González'
-                )}`}
+                href={portfolioData.contact.calendly}
+                target="_blank"
+                rel="noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] text-sm"
               >
                 <Calendar className="w-4 h-4" />
                 {t.booking.btnSchedule}
+                <ArrowUpRight className="w-4 h-4 opacity-75" />
               </a>
 
               {/* Copy Email Button with feedback */}

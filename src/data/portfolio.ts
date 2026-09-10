@@ -119,6 +119,7 @@ export const portfolioData = {
     location: "San Andrés Cholula, Puebla, México",
     email: "magc2204@gmail.com",
     linkedin: "https://www.linkedin.com/in/mario-g-b17aba151",
+    calendly: "https://calendly.com/magc2204",
     github: "#",
   },
 };
