@@ -482,7 +482,30 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('es');
+  const [language, setLanguageState] = useState<Language>(() => {
+    // 1. Check if user already manually selected a language
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('mariog_lang');
+      if (saved === 'es' || saved === 'en') return saved;
+
+      // 2. Auto-detect phone / browser system language
+      const browserLang = navigator.language || (navigator as { languages?: string[] }).languages?.[0] || '';
+      if (browserLang.toLowerCase().startsWith('es')) {
+        return 'es';
+      }
+      return 'en'; // Default to English for international visitors/recruiters
+    }
+    return 'es';
+  });
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem('mariog_lang', lang);
+    } catch {
+      // ignore storage errors
+    }
+  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t: translations[language] }}>

@@ -113,7 +113,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden mt-3 mx-4 p-4 glass-card rounded-2xl">
+        <div className="md:hidden mt-3 mx-4 p-4 glass-card rounded-2xl flex flex-col gap-2">
           {navLinks.map((link) => (
             <button
               key={link.href}
@@ -123,6 +123,42 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+
+          {/* Mobile Language Selector & Sound Toggle */}
+          <div className="flex items-center justify-between pt-3 mt-1 border-t border-white/10 px-2">
+            <div className="flex items-center bg-slate-900/80 border border-slate-700/80 rounded-xl p-1">
+              <button
+                onClick={() => setLanguage('es')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
+                  language === 'es'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md'
+                    : 'text-slate-400'
+                }`}
+              >
+                🇲🇽 ES
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
+                  language === 'en'
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-md'
+                    : 'text-slate-400'
+                }`}
+              >
+                🇺🇸 EN
+              </button>
+            </div>
+
+            <button
+              onClick={() => {
+                const active = toggleSound();
+                setSoundOn(active);
+              }}
+              className="p-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-400"
+            >
+              {soundOn ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+            </button>
+          </div>
         </div>
       )}
     </nav>
