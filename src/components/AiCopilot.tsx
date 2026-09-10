@@ -77,6 +77,13 @@ export default function AiCopilot() {
         : 'I make sure Mario stays focused and I share honest insights about his projects (like when he cut 40% reporting time at Badak for GNP Seguros, or boosted squad velocity by 30% at Niku Tech). Ask me about his certifications, leadership, or how to reach him! 🐾';
     }
 
+    // 1.1 Protección de datos sensibles / privacidad (dirección exacta, cuentas, documentos personales, etc.)
+    if (qLower.includes('direccion exacta') || qLower.includes('dirección exacta') || qLower.includes('calle') || qLower.includes('numero') || qLower.includes('rfc') || qLower.includes('curp') || qLower.includes('banco') || qLower.includes('cuenta') || qLower.includes('ine') || qLower.includes('pasaporte') || qLower.includes('password') || qLower.includes('contraseña') || qLower.includes('tarjeta')) {
+      return isEs
+        ? '¡Miau! 🐾 Por políticas de privacidad y seguridad, no comparto datos personales sensibles (como identificaciones oficiales, dirección física exacta o datos fiscales). Puedes consultar libremente su trayectoria profesional, credenciales técnicas y métodos de contacto laboral.'
+        : 'Meow! 🐾 For privacy and security reasons, I do not disclose sensitive personal information (such as official IDs, exact street address, or tax credentials). You are welcome to explore his professional background, technical track record, and business contact info.';
+    }
+
     // Direct match with preset questions
     const exactMatch = t.copilot.questions.find((q) => q.question.toLowerCase() === qLower);
     if (exactMatch) return exactMatch.answer;
@@ -91,8 +98,8 @@ export default function AiCopilot() {
     // 3. Salario, Disponibilidad, Esquema de Trabajo (Salary, Availability, Work Mode)
     if (qLower.includes('salari') || qLower.includes('sueldo') || qLower.includes('cuanto gana') || qLower.includes('cuánto gana') || qLower.includes('tarifa') || qLower.includes('rate') || qLower.includes('salary') || qLower.includes('compensac') || qLower.includes('disponib') || qLower.includes('remoto') || qLower.includes('hibrid') || qLower.includes('cuándo puede empezar') || qLower.includes('cuando puede empezar')) {
       return isEs
-        ? 'Mario tiene disponibilidad inmediata (Open to Work) para incorporarse a nuevos retos como IT Project Manager, Scrum Master o Líder de Automatización/IA. Está 100% abierto a esquemas remotos o híbridos. Su expectativa salarial es competitiva y adaptable según el alcance del proyecto, prestaciones y responsabilidades del squad. ¡Te invito a agendar una llamada directa de 15 min con él usando el botón de Calendly para platicar detalles!'
-        : 'Mario is immediately available (Open to Work) for roles as IT Project Manager, Scrum Master, or AI/Automation Lead. He is fully open to Remote or Hybrid setups. His salary range is competitive and adaptable based on scope, benefits, and squad responsibilities. Feel free to book a direct 15-min discovery call via Calendly to discuss compensation and fit!';
+        ? '¡Te cuento! 🐾 La expectativa salarial de Mario es de $45,000 MXN netos mensuales (o su equivalente según esquema contractual y paquete de beneficios). En cuanto a disponibilidad, está disponible de manera inmediata (Open to Work) para esquemas 100% remotos o híbridos en roles de IT Project Manager, Scrum Master o Líder de Automatización e IA.'
+        : 'Let me share that! 🐾 Mario\'s target compensation is $45,000 MXN net monthly (~$2,300 - $2,500 USD depending on contract type and benefits package). He has immediate availability (Open to Work) for 100% remote or hybrid roles as IT Project Manager, Scrum Master, or AI/Automation Lead.';
     }
 
     // 4. Ubicación / Residencia / Relocación
@@ -193,11 +200,32 @@ export default function AiCopilot() {
         : 'Mario\'s delivery playbook follows 4 core stages: 1) Backlog & Refinement (Clear DoD without ambiguity); 2) Sprint Planning & Sizing (Calibrated to squad velocity); 3) Execution & Fast Unblocking (<24h impediment triage with stakeholders); 4) Automated Reporting & Delivery (Python/Apps Script pipelines saving 40% admin hours and full Jira defect traceability).';
     }
 
-    // 18. Años de experiencia / Resumen general
-    if (qLower.includes('experiencia') || qLower.includes('años') || qLower.includes('trayectoria') || qLower.includes('resumen') || qLower.includes('perfil') || qLower.includes('summary')) {
+    // 19. ¿Por qué deberíamos contratar a Mario? / Propuesta de Valor Única (Why hire Mario)
+    if (qLower.includes('por que') || qLower.includes('por qué') || qLower.includes('contratar') || qLower.includes('valor') || qLower.includes('diferencia') || qLower.includes('why hire') || qLower.includes('why should we hire')) {
       return isEs
-        ? 'Mario cuenta con 7+ años de experiencia liderando proyectos tecnológicos y software. Su perfil destaca por la combinación única de gobernanza ágil (Scrum SFPC), gestión tradicional de presupuestos y riesgos, y capacidad técnica real para automatizar reportes y procesos con Python, Google Apps Script e Inteligencia Artificial.'
-        : 'Mario brings 7+ years of experience leading technology and software initiatives. His profile stands out by combining Agile governance (Scrum SFPC), PMBOK budget/risk discipline, and hands-on technical skills in Python, Google Apps Script, and AI Agent automation.';
+        ? '¡La razón número 1 es su perfil híbrido! 🐾 Mario no es un PM que solo pide estatus en reuniones: 1) Entiende el código y la arquitectura técnica; 2) Está certificado en Scrum (SFPC); 3) Automatiza con Python y herramientas de IA eliminando 40% de burocracia manual; y 4) Tiene experiencia probada en cuentas de alta exigencia como GNP Seguros entregando en tiempo, costo y calidad.'
+        : 'The number 1 reason is his hybrid profile! 🐾 Mario isn\'t a PM who just asks for updates in meetings: 1) He understands technical architecture; 2) He is SFPC Scrum certified; 3) He automates reporting via Python & AI saving 40% admin overhead; and 4) He has delivered on high-stakes enterprise accounts like GNP Seguros on time, budget, and scope.';
+    }
+
+    // 20. Manejo de Conflictos y Presión con Stakeholders / Scope Creep
+    if (qLower.includes('conflicto') || qLower.includes('presion') || qLower.includes('presión') || qLower.includes('retraso') || qLower.includes('cambio de alcance') || qLower.includes('scope creep') || qLower.includes('cliente dificil') || qLower.includes('cliente difícil')) {
+      return isEs
+        ? 'Ante atrasos o cambios de alcance (scope creep), Mario aplica un principio clave: "Datos transparentes matan suposiciones". Usa métricas de velocidad en Jira y reportes automatizados para negociar con el cliente y la PMO con hechos objetivos: si entra nuevo alcance, se recalibra el backlog o se ajusta la fecha con acuerdos claros, protegiendo al equipo de burnout.'
+        : 'When facing delays or scope creep, Mario follows a core principle: "Transparent data beats assumptions". He leverages Jira velocity metrics and automated tracking to negotiate objectively with clients and PMOs: if scope changes, backlog priorities or deadlines shift transparently, shielding the squad from burnout.';
+    }
+
+    // 21. Gestión de Equipos Remotos / Distribuidos (Remote Team Leadership)
+    if (qLower.includes('equipo remoto') || qLower.includes('gestion remota') || qLower.includes('gestión remota') || qLower.includes('home office') || qLower.includes('distribuido') || qLower.includes('remote management')) {
+      return isEs
+        ? 'Mario gestiona equipos remotos mediante objetivos claros (DoD), ceremonias ágiles concisas (máximo 15 min en Dailies), tableros transparentes en Jira/ClickUp y comunicación asíncrona documentada en Slack o Teams, garantizando alta autonomía y alineación sin micro-management.'
+        : 'Mario leads remote squads through clear Definitions of Done (DoD), timeboxed agile rituals (<15 min Dailies), transparent Jira/ClickUp boards, and documented async communication in Slack/Teams, driving high squad autonomy without micromanagement.';
+    }
+
+    // 22. Puente entre Negocio y Desarrollo (Business vs Technical Translator)
+    if (qLower.includes('negocio') || qLower.includes('desarrollador') || qLower.includes('traductor') || qLower.includes('puente') || qLower.includes('tecnico y negocio') || qLower.includes('técnico y negocio')) {
+      return isEs
+        ? 'Al tener formación en Comunicación (BUAP) combinada con diplomado en PM (UVP) y dominio de Python/IA, Mario actúa como un puente natural: traduce requerimientos de negocio y necesidades del cliente a Historias de Usuario técnicas y medibles sin ambigüedad para los desarrolladores.'
+        : 'With a background in Communication (BUAP), a PM specialization (UVP), and hands-on Python/AI skills, Mario acts as a seamless bridge: translating business goals into unambiguous, actionable technical User Stories for engineering teams.';
     }
 
     // Human and natural conversational fallback with cat flair
