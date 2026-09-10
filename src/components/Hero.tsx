@@ -1,9 +1,13 @@
-import { FileDown, LayoutGrid, ChevronDown, CalendarDays, Users, Target } from 'lucide-react';
+import { useState } from 'react';
+import { FileDown, LayoutGrid, ChevronDown, CalendarDays, Users, Target, Eye } from 'lucide-react';
 import CommandCenter from './CommandCenter';
+import CvPreviewModal from './CvPreviewModal';
 import { useLanguage } from '@/context/LanguageContext';
+import { playSound } from '@/utils/sound';
 
 export default function Hero() {
   const { t } = useLanguage();
+  const [cvModalOpen, setCvModalOpen] = useState(false);
 
   const scrollTo = (href: string) =>
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
@@ -61,23 +65,26 @@ export default function Hero() {
           </p>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a
-              href="/CV_Mario_Gonzalez_IT_PM.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download="CV_Mario_Gonzalez_IT_PM.pdf"
-              className="flex items-center justify-center gap-2 px-7 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl btn-glow glow-cyan text-base shadow-lg shadow-cyan-500/20"
-            >
-              <FileDown className="w-5 h-5" />
-              {t.hero.downloadCv}
-            </a>
+          <div className="flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start">
             <button
-              onClick={() => scrollTo('#kanban')}
-              className="flex items-center justify-center gap-2 px-7 py-4 bg-white/10 text-white font-bold rounded-xl btn-glow border border-white/20 hover:bg-white/15 text-base transition-all"
+              onClick={() => {
+                playSound('click');
+                setCvModalOpen(true);
+              }}
+              className="flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl btn-glow glow-cyan text-sm sm:text-base shadow-lg shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              <Eye className="w-5 h-5" />
+              <span>{t.hero.downloadCv}</span>
+            </button>
+            <button
+              onClick={() => {
+                playSound('click');
+                scrollTo('#cases');
+              }}
+              className="flex items-center justify-center gap-2 px-6 py-4 bg-white/10 text-white font-bold rounded-xl btn-glow border border-white/20 hover:bg-white/15 text-sm sm:text-base transition-all"
             >
               <LayoutGrid className="w-5 h-5" />
-              {t.hero.exploreProjects}
+              <span>{t.hero.exploreProjects}</span>
             </button>
           </div>
 
@@ -124,6 +131,9 @@ export default function Hero() {
         <span className="text-xs font-bold uppercase tracking-widest">Scroll</span>
         <ChevronDown className="w-5 h-5 animate-bounce" />
       </button>
+
+      {/* CV Quick View Modal */}
+      <CvPreviewModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
     </section>
   );
 }

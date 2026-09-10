@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '@/context/LanguageContext';
+import { playSound } from '@/utils/sound';
 
 type Ticket = {
   id: string;
@@ -169,7 +170,7 @@ function TicketDetailModal({
 export default function KanbanBoard() {
   const { t, language } = useLanguage();
   const [viewMode, setViewMode] = useState<'kanban' | 'timeline'>('kanban');
-  const [activeFilter, setActiveFilter] = useState<'all' | 'highest'>('all');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'highest' | 'agile' | 'automation' | 'ai'>('all');
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
   const [catPurring, setCatPurring] = useState(false);
 
@@ -186,6 +187,7 @@ export default function KanbanBoard() {
 
   // Drag & Drop handlers
   const handleDragStart = (e: React.DragEvent, ticket: Ticket, sourceColId: string) => {
+    playSound('card');
     e.dataTransfer.setData('application/json', JSON.stringify({ ticket, sourceColId }));
     e.dataTransfer.effectAllowed = 'move';
   };
@@ -204,6 +206,8 @@ export default function KanbanBoard() {
       const { ticket, sourceColId } = JSON.parse(raw) as { ticket: Ticket; sourceColId: string };
       if (sourceColId === targetColId) return;
 
+      playSound('card');
+
       setColumnsData((prev) => {
         return prev.map((col) => {
           if (col.id === sourceColId) {
@@ -218,6 +222,7 @@ export default function KanbanBoard() {
 
       // If dropped into DONE column: celebrate and trigger cat reaction
       if (targetColId === 'done') {
+        playSound('success');
         confetti({
           particleCount: 80,
           spread: 70,
@@ -369,9 +374,9 @@ export default function KanbanBoard() {
 
               {/* Quick Filter buttons (only for kanban view) */}
               {viewMode === 'kanban' && (
-                <div className="flex items-center gap-1.5">
+                <div className="flex flex-wrap items-center gap-1.5">
                   <button
-                    onClick={() => setActiveFilter('all')}
+                    onClick={() => { playSound('click'); setActiveFilter('all'); }}
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                       activeFilter === 'all'
                         ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
@@ -381,14 +386,44 @@ export default function KanbanBoard() {
                     {t.kanban.boardMeta.filterAll}
                   </button>
                   <button
-                    onClick={() => setActiveFilter('highest')}
+                    onClick={() => { playSound('click'); setActiveFilter('agile'); }}
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                      activeFilter === 'highest'
+                      activeFilter === 'agile'
                         ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40'
                         : 'text-slate-400 hover:text-white bg-white/5 border border-transparent'
                     }`}
                   >
-                    High Priority / P0
+                    Scrum / Agile
+                  </button>
+                  <button
+                    onClick={() => { playSound('click'); setActiveFilter('automation'); }}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                      activeFilter === 'automation'
+                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                        : 'text-slate-400 hover:text-white bg-white/5 border border-transparent'
+                    }`}
+                  >
+                    Scripting / Python
+                  </button>
+                  <button
+                    onClick={() => { playSound('click'); setActiveFilter('ai'); }}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                      activeFilter === 'ai'
+                        ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40'
+                        : 'text-slate-400 hover:text-white bg-white/5 border border-transparent'
+                    }`}
+                  >
+                    Agentes IA
+                  </button>
+                  <button
+                    onClick={() => { playSound('click'); setActiveFilter('highest'); }}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                      activeFilter === 'highest'
+                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                        : 'text-slate-400 hover:text-white bg-white/5 border border-transparent'
+                    }`}
+                  >
+                    P0 / Core
                   </button>
                 </div>
               )}
@@ -400,10 +435,25 @@ export default function KanbanBoard() {
             <div className="grid lg:grid-cols-3 gap-6">
               {columnsData.map((col) => {
                 const Icon = columnIcons[col.id] || Circle;
-                const filteredTickets =
-                  activeFilter === 'highest'
-                    ? col.tickets.filter((t) => t.priority === 'Highest' || t.priority === 'High' || t.priority === 'Done')
-                    : col.tickets;
+                const filteredTickets = col.tickets.filter((ticket) => {
+                  if (activeFilter === 'all') return true;
+                  if (activeFilter === 'highest') {
+                    return ticket.priority === 'Highest' || ticket.priority === 'High' || ticket.priority === 'Core' || ticket.priority === 'P0' || ticket.priority === 'Done';
+                  }
+                  if (activeFilter === 'agile') {
+                    const str = `${ticket.title} ${ticket.tag} ${ticket.description || ''}`.toLowerCase();
+                    return str.includes('scrum') || str.includes('agil') || str.includes('kanban') || str.includes('pmo') || str.includes('jira') || str.includes('sprint');
+                  }
+                  if (activeFilter === 'automation') {
+                    const str = `${ticket.title} ${ticket.tag} ${ticket.description || ''}`.toLowerCase();
+                    return str.includes('script') || str.includes('python') || str.includes('apps script') || str.includes('automatiz') || str.includes('report');
+                  }
+                  if (activeFilter === 'ai') {
+                    const str = `${ticket.title} ${ticket.tag} ${ticket.description || ''}`.toLowerCase();
+                    return str.includes('ia') || str.includes('ai') || str.includes('langflow') || str.includes('agente') || str.includes('prompt');
+                  }
+                  return true;
+                });
 
                 return (
                   <div

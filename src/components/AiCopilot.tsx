@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Sparkles } from 'lucide-react';
+import { Send, Bot, User, Sparkles, Briefcase, Cpu, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { playSound } from '@/utils/sound';
 
 type Message = {
   role: 'assistant' | 'user';
   text: string;
 };
+
+type PersonaMode = 'all' | 'recruiter' | 'technical';
 
 export default function AiCopilot() {
   const { t, language } = useLanguage();
@@ -18,7 +21,10 @@ export default function AiCopilot() {
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [streamedText, setStreamedText] = useState('');
+  const [personaMode, setPersonaMode] = useState<PersonaMode>('all');
   const scrollRef = useRef<HTMLDivElement>(null);
+  const typingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Update greeting on language change
   useEffect(() => {
@@ -34,7 +40,7 @@ export default function AiCopilot() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, isTyping]);
+  }, [messages, isTyping, streamedText]);
 
   const getResponse = (question: string): string => {
     const qLower = question.toLowerCase().trim();
@@ -97,17 +103,39 @@ export default function AiCopilot() {
     return t.copilot.defaultResponse;
   };
 
-  const sendMessage = (text: string) => {
-    setMessages((prev) => [...prev, { role: 'user', text }]);
+  // Typewriter streaming effect
+  const typeText = (fullText: string) => {
     setIsTyping(true);
+    setStreamedText('');
+    let charIndex = 0;
+    playSound('copilot');
+
+    if (typingTimerRef.current) clearInterval(typingTimerRef.current);
+
+    typingTimerRef.current = setInterval(() => {
+      if (charIndex < fullText.length) {
+        charIndex += 2; // Fast & smooth streaming
+        setStreamedText(fullText.slice(0, charIndex));
+      } else {
+        if (typingTimerRef.current) clearInterval(typingTimerRef.current);
+        setMessages((prev) => [...prev, { role: 'assistant', text: fullText }]);
+        setStreamedText('');
+        setIsTyping(false);
+      }
+    }, 18);
+  };
+
+  const sendMessage = (text: string) => {
+    playSound('click');
+    setMessages((prev) => [...prev, { role: 'user', text }]);
+    const response = getResponse(text);
     setTimeout(() => {
-      setMessages((prev) => [...prev, { role: 'assistant', text: getResponse(text) }]);
-      setIsTyping(false);
-    }, 1200);
+      typeText(response);
+    }, 450);
   };
 
   const handleSend = () => {
-    if (!input.trim()) return;
+    if (!input.trim() || isTyping) return;
     sendMessage(input.trim());
     setInput('');
   };
@@ -181,19 +209,78 @@ export default function AiCopilot() {
               </div>
             </div>
 
-            {/* Quick questions */}
+            {/* Quick questions & Persona mode switcher */}
             <div className="glass-card rounded-3xl p-4">
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 px-2">{t.copilot.quickQuestionsTitle}</p>
+              <div className="flex items-center justify-between gap-2 mb-3 px-1">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t.copilot.quickQuestionsTitle}</p>
+              </div>
+
+              {/* Mode selector: General | Recruiter HR | Technical PM */}
+              <div className="grid grid-cols-2 gap-1.5 p-1 bg-black/40 rounded-xl mb-3 border border-white/5 text-xs font-semibold">
+                <button
+                  onClick={() => { playSound('click'); setPersonaMode('recruiter'); }}
+                  className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg transition-all ${
+                    personaMode === 'recruiter'
+                      ? 'bg-purple-600 text-white shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  <Briefcase className="w-3.5 h-3.5" />
+                  {language === 'es' ? 'Reclutador' : 'Recruiter'}
+                </button>
+                <button
+                  onClick={() => { playSound('click'); setPersonaMode('technical'); }}
+                  className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg transition-all ${
+                    personaMode === 'technical'
+                      ? 'bg-cyan-600 text-white shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  <Cpu className="w-3.5 h-3.5" />
+                  {language === 'es' ? 'Técnico / PMO' : 'Tech / PMO'}
+                </button>
+              </div>
+
+              {/* Filtered questions based on personaMode */}
               <div className="flex flex-col gap-2">
-                {t.copilot.questions.map((q) => (
+                {(personaMode === 'recruiter'
+                  ? [
+                      {
+                        label: language === 'es' ? '¿Cuál es su expectativa salarial?' : 'What is his salary expectation?',
+                        q: language === 'es' ? '¿Cuál es tu rango salarial y disponibilidad?' : 'What is your salary range and availability?'
+                      },
+                      {
+                        label: language === 'es' ? '¿Cuál es su nivel de inglés?' : 'What is his English level?',
+                        q: language === 'es' ? '¿Cuál es tu nivel de inglés?' : 'What is your English proficiency level?'
+                      },
+                      {
+                        label: language === 'es' ? '¿Certificación Scrum (SFPC)?' : 'Scrum Certification (SFPC)?',
+                        q: language === 'es' ? 'Háblame de tu certificación Scrum SFPC' : 'Tell me about your Scrum SFPC certification'
+                      }
+                    ]
+                  : [
+                      {
+                        label: language === 'es' ? '¿Cómo automatiza el reporteo?' : 'How does he automate reporting?',
+                        q: language === 'es' ? '¿Cómo automatiza Mario el seguimiento y reporteo?' : 'How does Mario automate tracking and reporting?'
+                      },
+                      {
+                        label: language === 'es' ? '¿Flujos de IA & LangFlow?' : 'AI Agents & LangFlow flows?',
+                        q: language === 'es' ? '¿Qué herramientas de IA y scripting utiliza?' : 'What AI tools and scripting does Mario use?'
+                      },
+                      {
+                        label: language === 'es' ? '¿Experiencia en GNP Seguros?' : 'Experience at GNP Seguros?',
+                        q: language === 'es' ? 'Cuéntame de tu experiencia en GNP Seguros' : 'Tell me about your experience at GNP Seguros'
+                      }
+                    ]
+                ).map((qItem) => (
                   <button
-                    key={q.label}
-                    onClick={() => sendMessage(q.question)}
+                    key={qItem.label}
+                    onClick={() => sendMessage(qItem.q)}
                     disabled={isTyping}
-                    className="flex items-start gap-2 px-3 py-2.5 text-sm font-semibold text-slate-300 bg-white/5 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-xl transition-all border border-transparent hover:border-cyan-500/30 disabled:opacity-50 disabled:cursor-not-allowed text-left"
+                    className="flex items-start gap-2 px-3 py-2.5 text-xs sm:text-sm font-semibold text-slate-300 bg-white/5 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-xl transition-all border border-transparent hover:border-cyan-500/30 disabled:opacity-50 disabled:cursor-not-allowed text-left"
                   >
-                    <Sparkles className="w-4 h-4 flex-shrink-0 text-cyan-400 mt-0.5" />
-                    {q.label}
+                    <Sparkles className="w-3.5 h-3.5 flex-shrink-0 text-cyan-400 mt-0.5" />
+                    {qItem.label}
                   </button>
                 ))}
               </div>
@@ -256,7 +343,25 @@ export default function AiCopilot() {
                 </div>
               ))}
 
-              {isTyping && (
+              {/* Live typewriter streaming message bubble */}
+              {isTyping && streamedText && (
+                <div className="flex gap-2.5 max-w-[85%]">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5">
+                    <img
+                      src="/agente.png"
+                      alt="Mario"
+                      className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
+                    />
+                  </div>
+                  <div className="glass text-slate-200 px-4 py-3 rounded-2xl rounded-tl-sm border border-cyan-500/30 text-sm leading-relaxed shadow-lg shadow-cyan-500/5">
+                    {streamedText}
+                    <span className="inline-block w-1.5 h-4 ml-1 bg-cyan-400 animate-pulse align-middle" />
+                  </div>
+                </div>
+              )}
+
+              {/* Waiting indicator when typing hasn't started streaming yet */}
+              {isTyping && !streamedText && (
                 <div className="flex gap-2.5">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5">
                     <img
@@ -265,7 +370,7 @@ export default function AiCopilot() {
                       className="w-full h-full rounded-full object-cover object-top bg-[#0a0e27]"
                     />
                   </div>
-                  <div className="glass px-4 py-3 rounded-2xl rounded-tl-sm flex gap-1.5 border border-white/10">
+                  <div className="glass px-4 py-3 rounded-2xl rounded-tl-sm flex gap-1.5 border border-white/10 items-center">
                     <div className="w-2 h-2 bg-cyan-400 rounded-full blink" />
                     <div className="w-2 h-2 bg-cyan-400 rounded-full blink" style={{ animationDelay: '0.2s' }} />
                     <div className="w-2 h-2 bg-cyan-400 rounded-full blink" style={{ animationDelay: '0.4s' }} />

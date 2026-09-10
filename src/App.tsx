@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import SprintMetrics from '@/components/SprintMetrics';
 import KanbanBoard from '@/components/KanbanBoard';
+import CaseStudies from '@/components/CaseStudies';
 import AiCopilot from '@/components/AiCopilot';
 import BookingSection from '@/components/BookingSection';
 import Footer from '@/components/Footer';
@@ -19,6 +20,7 @@ function App() {
           <Hero />
           <SprintMetrics />
           <KanbanBoard />
+          <CaseStudies />
           <AiCopilot />
           <BookingSection />
         </main>

@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Radar, Globe } from 'lucide-react';
+import { Menu, X, Volume2, VolumeX } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { isSoundMuted, toggleSound, playSound } from '@/utils/sound';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [soundOn, setSoundOn] = useState(!isSoundMuted());
   const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
     { label: t.nav.about, href: '#hero' },
     { label: t.nav.metrics, href: '#metrics' },
     { label: t.nav.experience, href: '#kanban' },
+    { label: language === 'es' ? 'Casos' : 'Cases', href: '#cases' },
     { label: t.nav.copilot, href: '#copilot' },
   ];
 
@@ -79,6 +82,18 @@ export default function Navbar() {
               <span>🇺🇸 EN</span>
             </button>
           </div>
+
+          {/* SOUND EFFECTS TOGGLE */}
+          <button
+            onClick={() => {
+              const active = toggleSound();
+              setSoundOn(active);
+            }}
+            title={soundOn ? 'Efectos de sonido activos (clic para silenciar)' : 'Sonido silenciado (clic para activar)'}
+            className="p-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-400 hover:text-cyan-400 transition-colors mr-1"
+          >
+            {soundOn ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+          </button>
 
           <a
             href="#contact"
