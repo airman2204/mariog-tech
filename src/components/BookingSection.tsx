@@ -52,7 +52,7 @@ export default function BookingSection() {
                     <Clock className="w-3.5 h-3.5" />
                     {isEs ? 'Zona Horaria' : 'Timezone'}
                   </div>
-                  <p className="text-white text-sm font-semibold">CST (UTC-6) / Remoto</p>
+                  <p className="text-white text-sm font-semibold">{isEs ? 'CDMX (UTC-6) • México' : 'Mexico City (UTC-6)'}</p>
                 </div>
                 <div className="glass rounded-xl p-3 border border-white/5">
                   <div className="flex items-center gap-2 text-purple-400 text-xs font-bold uppercase tracking-wider mb-1">
