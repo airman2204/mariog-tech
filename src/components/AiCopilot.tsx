@@ -44,12 +44,42 @@ export default function AiCopilot() {
 
   const getResponse = (question: string): string => {
     const qLower = question.toLowerCase().trim();
+    const isEs = language === 'es';
 
-    // 1. Direct match with preset questions
+    // 1. Conversational Greetings & Small Talk (Human, friendly & warm)
+    if (/^(hola|buenos d[ií]as|buenas tardes|buenas noches|hey|qu[eé] tal|c[oó]mo est[aá]s|saludos|que onda|buenas)/i.test(qLower)) {
+      return isEs
+        ? '¡Hola! Qué gusto saludarte. Soy el asistente virtual de Mario. ¿Cómo estás hoy? Cuéntame, ¿hay algo específico que te gustaría saber sobre su experiencia en gestión de proyectos, Scrum o automatización con IA?'
+        : 'Hello there! Great to meet you. I am Mario\'s virtual assistant. How can I help you today? Feel free to ask anything about his project management background, Scrum leadership, or AI automation projects!';
+    }
+
+    if (/^(gracias|muchas gracias|agradecido|thanks|thank you|thx)/i.test(qLower)) {
+      return isEs
+        ? '¡De nada! Es un placer ayudarte. Si necesitas consultar algo más o deseas agendar una llamada directa con Mario, avísame con toda confianza.'
+        : 'You are very welcome! If you have any other questions or would like to schedule a direct chat with Mario, just let me know.';
+    }
+
+    if (/^(adi[oó]s|hasta luego|bye|chao|nos vemos|goodbye)/i.test(qLower)) {
+      return isEs
+        ? '¡Hasta luego! Muchas gracias por tomarte el tiempo de visitar el portafolio de Mario. Que tengas un excelente día. 👋'
+        : 'Goodbye! Thank you for taking the time to explore Mario\'s portfolio. Have a wonderful day ahead! 👋';
+    }
+
+    if (/^(qui[eé]n eres|qui[eé]n es mario|cu[aá]ntame de ti|who are you|about you)/i.test(qLower)) {
+      return isEs
+        ? '¡Con gusto! Soy el asistente inteligente de Mario González. Mario es un IT Project Manager con más de 7 años de experiencia liderando equipos de software, certificado en Scrum (SFPC) y apasionado por resolver problemas reales con automatizaciones en Python, Google Apps Script e Inteligencia Artificial.'
+        : 'Glad to share! I am Mario González\'s AI assistant. Mario is an IT Project Manager with 7+ years of experience leading engineering squads, certified in Scrum (SFPC), and passionate about building real-world automated pipelines with Python, Apps Script, and AI Agents.';
+    }
+
+    if (/(qu[eé] haces|para qu[eé] sirves|ayuda|help)/i.test(qLower)) {
+      return isEs
+        ? 'Estoy aquí para responder cualquier duda sobre la trayectoria de Mario: sus proyectos en GNP Seguros y Niku Tech, sus certificaciones, su forma de liderar sprints o cómo automatiza procesos para ahorrar hasta un 40% de tiempo. ¿Qué te gustaría explorar?'
+        : 'I\'m here to answer any questions about Mario\'s career: his projects at GNP Seguros and Niku Tech, his Scrum certifications, his agile leadership style, or how he automates operations. What would you like to explore?';
+    }
+
+    // Direct match with preset questions
     const exactMatch = t.copilot.questions.find((q) => q.question === question);
     if (exactMatch) return exactMatch.answer;
-
-    const isEs = language === 'es';
 
     // 2. Intelligent topic classification based on Mario's verified CV
     if (qLower.includes('certif') || qLower.includes('sfpc') || qLower.includes('certiprof') || qLower.includes('credencial')) {
@@ -100,7 +130,10 @@ export default function AiCopilot() {
         : 'Mario is proficient in both Agile (Scrum, Kanban) and Traditional governance (PMBOK/Waterfall). He has led daily standups, retrospectives, WBS planning, risk matrices, and scope & budget governance for high-impact initiatives.';
     }
 
-    return t.copilot.defaultResponse;
+    // Human and natural conversational fallback
+    return isEs
+      ? `Comprendo tu pregunta. Sobre ese tema en específico, Mario siempre busca aportar valor práctico y soluciones medibles. Te sugiero preguntarme sobre su experiencia en Scrum (SFPC), su trabajo en GNP Seguros, sus automatizaciones en Python y Apps Script, o si lo prefieres, puedes agendar una llamada directa de 15 min con él en el botón de Calendly.`
+      : `I understand your question! On this topic, Mario always emphasizes practical value and measurable outcomes. Feel free to ask about his Scrum (SFPC) leadership, software delivery at GNP Seguros, Python/Apps Script automations, or schedule a direct 15-min discovery call via Calendly.`;
   };
 
   // Typewriter streaming effect
